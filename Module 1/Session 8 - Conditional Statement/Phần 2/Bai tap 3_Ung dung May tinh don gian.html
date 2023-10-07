@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Calculator</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .label{
+            display: inline-block;
+            font-weight: bold;
+        }
+        .display{
+            background-color: moccasin;
+            display: block;
+            width: 100%;
+            height: 40px;
+            padding: 0;
+            text-align: end;
+            border-style: ridge;
+        }
+        .btn{
+            margin: .2em;
+            width: 50px;
+            height: 40px;
+            padding: 1em auto;
+            text-align: center;
+            border-radius: 20%;
+        }
+        .btn:hover{
+            background-color: white;
+        }
+        .btn-numb{
+            background-color: ivory;
+                }
+        .btn-equal{
+            background-color: deepskyblue;
+        }
+        .btn-container{
+            width: max-content;
+        }
+
+    </style>
+</head>
+<body>
+<div class="btn-container">
+    <p id="display" class="display" > </p>
+    <div class="btn-row-1">
+        <button class="btn btn-numb" data-number="1"> 1 </button>
+        <button class="btn btn-numb" data-number="2"> 2 </button>
+        <button class="btn btn-numb" data-number="3"> 3 </button>
+        <button class="btn btn-opr" data-operator="-"> - </button>
+    </div>
+    <div class="btn-row-2">
+        <button class="btn btn-numb" data-number="4"> 4 </button>
+        <button class="btn btn-numb" data-number="5"> 5 </button>
+        <button class="btn btn-numb" data-number="6" > 6 </button>
+        <button class="btn btn-opr" data-operator="*"> &times; </button>
+    </div>
+    <div class="btn-row-3">
+        <button class="btn btn-numb" data-number="7" > 7 </button>
+        <button class="btn btn-numb" data-number="8"> 8 </button>
+        <button class="btn btn-numb" data-number="9"> 9 </button>
+        <button class="btn btn-opr" data-operator="/"> &divide; </button>
+    </div>
+    <div class="btn-row-4">
+        <button class="btn btn-clear" > C </button>
+        <button class="btn btn-numb" data-number="0"> 0 </button>
+        <button class="btn btn-equal" > = </button>
+        <button class="btn btn-opr" data-operator="+"> + </button>
+    </div>
+</div>
+<br>
+
+<script>
+    $(document).ready(function() {
+        let a="";
+        let b="";
+        let opr="";
+        let result = 0;
+        let flag = -1; //flag=-1 nếu chưa có click ;  flag = 0 nếu lần click gần nhất là number ; 1 nếu là operator
+        // gán click handler vào btn-number 
+        $("[data-number]").each(function() {
+            $(this).on("click",clickNumberBtn);
+        });
+        //  Tính toán khi nhấn btn-operator
+        $("[data-operator]").each(function(){
+            $(this).on("click",clickOperatorBtn);
+        });
+        // Show kết quả khi nhấn btn-equal
+        $('.btn-equal').on('click',showResult);
+        $('.btn-clear').on('click',clearCalc);
+
+        // Number button click handler
+        function clickNumberBtn() {
+            let inputNumber = $(this).attr("data-number");
+                if ((a === "") || (opr=== "")) {
+                   
+                    a = String(a) + inputNumber;
+                }
+                else {
+                    b = String(b) + inputNumber;
+                }
+                $("#display").append(inputNumber);
+               flag=0; // cờ xác định lần gần nhất là số   
+        }
+        // operator click handler
+        function clickOperatorBtn(){
+                let inputOper = $(this).attr("data-operator");
+                if (flag===-1) {
+                    a=0;
+                }
+                opr = inputOper;
+                let currDisplay=  $("#display").text();
+                if (flag===0) { // lần gần nhất là số thì tiếp tục nối vào chuỗi số
+                    currDisplay += inputOper;
+                    document.getElementById('display').innerText=currDisplay;
+                }
+                else {
+                    // Lần gần nhất là oprerator thì thay thế operator trước đó
+                    document.getElementById('display').innerText=currDisplay.slice(0,length-1)+inputOper;
+                }
+                flag=1; // cờ xác định lần gần nhất là operator                
+            }
+        // show result function - btn-equal handler
+        function showResult() {
+            a = parseFloat(a);
+            b = parseFloat(b);
+            switch (opr){
+                case "+":
+                    result=a+b;
+                    break;
+                case "-":
+                    result=a-b;
+                    break;
+                case "*":
+                    result=a*b;
+                    break;
+                case "/":
+                    if (b!==0){
+                        result=a/b;
+                    }
+                    break;
+            }
+            $(".display").text(result);
+            a=result;
+            b="";
+            opr="";
+            console.log(a);
+            console.log(b);
+            console.log(opr);
+           
+        }
+        // Clear function
+        function clearCalc() {
+            a="";
+            b="";
+            opr="";
+            result=0;
+            flag=-1;
+            $("#display").text("");
+        };
+    });
+   
+</script>
+</body>
+</html>

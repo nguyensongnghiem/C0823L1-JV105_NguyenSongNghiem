@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra nhiệt độ</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    let temp=0;
+    do {
+        temp = +prompt("Nhập vào nhiệt độ (Nhập 0 để dừng):");
+        if (temp===0) {
+            break;
+        }
+        else if (temp>100) {
+            alert("Giảm nhiệt độ");
+        }
+        else if (temp<20) {
+            alert("Tăng nhiệt độ")
+        }
+        else { alert("Nhiệt độ bình thường ")}
+    } while (temp !== 0);
+
+</script>
+</body>
+</html>

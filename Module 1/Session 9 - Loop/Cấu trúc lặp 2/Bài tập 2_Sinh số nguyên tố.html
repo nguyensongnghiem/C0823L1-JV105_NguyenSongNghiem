@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số nguyên tố</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<h3>Bảng số nguyên tố</h3>
+<script>
+    let i=1;
+    let count=0;
+    while (count<20){
+        if (CheckSoNguyenTo(i)) {
+            document.writeln(i);
+            count++;
+        }
+        i++;
+    }
+    console.log(CheckSoNguyenTo(5));
+    function CheckSoNguyenTo(a) {
+        let checked = true;
+        for (let j=2;j<a;j++) {
+            if ((a % j)===0) {
+                checked = false ;
+                break;
+            }
+        }
+        return checked;
+    }
+
+</script>
+</body>
+</html>

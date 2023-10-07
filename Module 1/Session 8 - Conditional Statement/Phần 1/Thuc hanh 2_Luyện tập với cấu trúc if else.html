@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check JS official name</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<label class="label"> What is the official name of JS: </label>
+<input type="text" id="ans">
+<br>
+<button onclick="Equal()"> Check ! </button>
+<br>
+<label class="label"> Your answer is :</label>
+<span id="equal"></span>
+<script>
+    function Equal(){
+        let ans = document.getElementById("ans").value;
+       if (ans === "ECMAScript") {
+           document.getElementById("equal").innerText= "Right !";
+       }
+       else {document.getElementById("equal").innerText= " Didn't know ? ECMAScript !";}
+
+    }
+</script>
+</body>
+</html>

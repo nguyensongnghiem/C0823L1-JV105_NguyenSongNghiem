@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Năm nhuận</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+
+        }
+    </style>
+</head>
+<body>
+<label class="label"> Nhập năm : </label>
+<input type="number" id="year">
+<br>
+<button onclick="Equal()"> Check ! </button>
+<br>
+<label class="label"> Năm này là :</label>
+<span id="equal"></span>
+<script>
+    function Equal(){
+        let year = parseInt(document.getElementById("year").value);
+        let dividedBy4 = (year%4===0);
+        let dividedBy100 = (year%100===0);
+        let dividedBy400 = (year%400===0);
+        let equal="";
+        if (dividedBy4) {
+            if (dividedBy100){
+                if (dividedBy400){
+                    equal="Năm nhuận"
+                }
+                else {equal="Năm không nhuận"}
+
+            }
+            else equal="Năm nhuận"
+        } else equal="Năm không nhuận"
+
+        document.getElementById("equal").innerText= equal;
+    }
+</script>
+</body>
+</html>

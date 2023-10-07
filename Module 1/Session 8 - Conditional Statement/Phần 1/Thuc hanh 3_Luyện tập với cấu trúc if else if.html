@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Username password</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        let username= prompt("Enter username:");
+        if (username ==="Admin" ){
+            let pass= prompt("Enter password:");
+            if (pass === "TheMaster"){
+                alert("Welcome Master");
+                }
+            else if (pass === "") {
+                alert("Canceled")
+            }
+            else {
+                alert("Wrong password !")
+            }
+        }
+        else {
+            alert("I don't know you !")
+        }
+
+    </script>
+    </body>
+</html>

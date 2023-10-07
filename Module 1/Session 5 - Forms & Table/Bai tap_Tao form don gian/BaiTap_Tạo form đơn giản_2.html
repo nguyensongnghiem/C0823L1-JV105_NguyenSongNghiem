@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo form đơn giản</title>
+    <style>
+
+        label.normal {
+            font-weight: bold;
+            display: inline-block;
+            width: 100px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        label.header{
+            color: red;
+            font-weight: bolder;
+            display: block;
+            text-align: center;
+        }
+        fieldset{
+            border-style: solid;
+            width: fit-content;
+            background: antiquewhite;
+        }
+        .btnHolder{
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+    </style>
+</head>
+<body>
+
+<form action="http://demo.codegym.vn/6/registration_form/register.php" method="get">
+    <fieldset>
+
+<!--        <legend style="text-align: center; font-weight: bolder">SỞ THÍCH CỦA BẠN</legend><br>-->
+        <label class="header"> ĐĂNG KÝ HỌC VIÊN </label><br>
+        <label class="normal">Họ và Tên</label>
+        <input type="text" name="fullname"><br>
+        <label class="normal">Ngày sinh</label>
+        <input type="date" name="birthday"><br>
+        <label class="normal">Giới tính</label>
+        <input type="radio" name="gender" value="male">
+            <label class="rdLabel"> Nam</label>
+            <input type="radio" name="gender" value="female">
+            <label class="rdLabel"> Nữ</label><br>
+            <label class="normal"> Địa chỉ</label>
+            <textarea></textarea>
+        <br>
+        <label class="normal">Lớp </label>
+        <select name="class">
+            <option value="C062023"> C062023</option>
+            <option value="C072023"> C072023</option>
+            <option value="C082023"> C082023</option>
+        </select><br>
+        <label class="normal">Email</label>
+        <input type="text" name="email"><br>
+        <label class="normal">Điện thoại</label>
+        <input type="text" name="phone"><br>
+        <br>
+        <div class="btnHolder">
+            <input style="padding: 3px; width: 100px" type="submit" value="Gửi thông tin">
+            <input style="padding: 3px; width: 100px" type="reset" value="Nhập lại">
+        </div>
+    </fieldset>
+
+</form>
+
+</body>
+</html>

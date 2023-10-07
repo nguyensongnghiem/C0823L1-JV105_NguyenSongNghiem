@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xếp loại sinh viên</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+            min-width: 150px
+        }
+    </style>
+</head>
+<body>
+<label class="label"> Nhập điểm Kiểm tra: </label>
+<input type="number" id="a">
+<br>
+<label class="label"> Nhập điểm Giữa kỳ: </label>
+<input type="number" id="b">
+<br>
+<label class="label"> Nhập điểm cuối kỳ: </label>
+<input type="number" id="c">
+<br>
+<button onclick="check()"> Check !</button>
+<br>
+<label class="label"></label>
+<span id="result"></span>
+<script>
+    function check(){
+        let a = parseFloat($("#a").val());
+        let b = parseFloat($("#b").val());
+        let c = parseFloat($("#c").val());
+        let diemTB= Math.round((a+b*2+c*3)/6);
+        if (diemTB >=9 ){
+            $('#result').html("Điểm đánh giá của bạn là : " + diemTB + ", Bạn đạt loại Giỏi");
+        }
+        else if (diemTB>=8){
+            $('#result').html("Điểm đánh giá của bạn là : " + diemTB + ", Bạn đạt loại Khá");
+        }
+        else if (diemTB>=5){
+            $('#result').html("Điểm đánh giá của bạn là : " + diemTB + ", Bạn đạt loại Trung bình");
+        }
+        else  $('#result').html("Điểm đánh giá của bạn là : " + diemTB + ", Bạn đạt loại Kém");
+    }
+</script>
+</body>
+</html>

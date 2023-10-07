@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <h3 class="heading">Play with the ball </h3>
+    <img id="ball" style="position: relative; left: 0; top: 0;" src="/Module 1/Session 9 - Cấu trúc lặp/Cấu trúc lặp 2/photo/ball.png" alt="Play with the ball">
+
+    <script>
+        let ballElement = document.getElementById('ball');
+        ballElement.addEventListener('click',kickBall);
+        function kickBall() {   
+            ballElement.style.left = parseInt(ballElement.style.left) + 20 +'px';
+            ballElement.style.top = parseInt(ballElement.style.top) + 10 +'px';
+        }
+    </script>    
+</body>
+</html>

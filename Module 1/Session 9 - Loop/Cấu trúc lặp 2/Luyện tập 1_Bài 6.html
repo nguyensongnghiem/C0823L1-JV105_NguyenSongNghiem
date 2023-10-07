@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng 30 Số đầu tiên chia hết cho 7 </title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<h3>Bảng số Fibonacci</h3>
+<script>
+    let i=1;
+    let count=0;
+    let sum=0;
+     while (count<30){
+        if (i%7===0){
+            document.writeln(i +";");
+            sum+=i;
+            count++;
+            console.log(count);
+        }
+        i++;
+    }
+    document.writeln("<br> 30 số đầu chia hết cho  7: "+ sum  );
+</script>
+</body>
+</html>

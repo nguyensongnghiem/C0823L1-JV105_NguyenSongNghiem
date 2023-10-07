@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check days of month</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+
+        }
+    </style>
+</head>
+<body>
+<label class="label"> Enter your Month  : </label>
+<input type="number" id="month">
+<br>
+<button onclick="checkDay()"> Check number of day ! </button>
+<br>
+<label class="label"> Number of day in this month is :</label>
+<span id="result"></span>
+<script>
+    function checkDay(){
+       let month = +$('#month').val();
+       let day = 0;
+       if ( month>=1 && month <=12 ) {
+           switch (month) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+               case 8:
+               case 10:
+               case 12:
+                   $('#result').html('31');
+                   break;
+               case 2:
+                   $('#result').html('29 or 28 ');
+                   break;
+               default:
+                   $('#result').html('30');
+           }
+       }
+       else alert('You enter a wrong month !')
+
+    }
+</script>
+</body>
+</html>

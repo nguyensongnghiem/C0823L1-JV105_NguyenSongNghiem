@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính thuế thu nhập</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+            min-width: 150px
+        }
+    </style>
+</head>
+<body>
+<label class="label"> Nhập mức thu nhập / 1 tháng (VNĐ) : </label>
+<input type="number" id="income">
+<label class="label"> Số người phụ thuộc : </label>
+<input type="number" id="numOfPer">
+<br>
+<button onclick="check()"> Tính thuế TNCN !</button>
+<br>
+<span id="result"></span>
+<script>
+    // Thu nhập chiu thuế / tháng = Thu nhập/tháng - ( 4tr * số ng phụ thuộc ) - 11tr
+
+    function check(){
+        const LV1 = 5; // thu nhập chịu thuê x < 5tr /tháng
+        const LV2 = 10; // 5 <x<= 10
+        const LV3 = 15; // x > 10
+        let tax = 0;
+        let income = parseFloat($("#income").val());
+        let numOfPer = parseFloat($("#numOfPer").val());
+        let taxedIncome = income - 11000000 - (numOfPer*4400000); // mỗi ng phụ thuộc giảm 4tr4 + bản thân 11tr
+        if (taxedIncome>=0){
+            if (taxedIncome<=5000000){
+                tax = taxedIncome * LV1 /100;
+            }
+            else if (taxedIncome<=10000000){
+                tax = taxedIncome * LV2 /100;
+            }
+            else {
+                tax = taxedIncome * LV3 /100;
+            }
+            $('#result').html("Tiền thuế thu nhập cá nhân trong 1 tháng là : " + tax +" VNĐ");
+
+        }
+        else $('#result').html("Bạn quá nghèo, không cần nộp thuế !");
+    }
+
+</script>
+</body>
+</html>     

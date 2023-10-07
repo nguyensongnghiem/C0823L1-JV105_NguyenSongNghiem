@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng cửu chương</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1> BẢNG CỬU CHƯƠNG </h1>
+    <table id="bangCuuChuong">
+    </table>
+</div>
+<script>
+    let bangCuuChuong = document.getElementById("bangCuuChuong");
+    console.log(bangCuuChuong)
+    for (let i=1;i<=9;i++){
+        let row = bangCuuChuong.insertRow(-1);
+        for (let j=2;j<=9;j++){
+            let cell = row.insertCell(-1);
+            cell.innerHTML= j+"x"+i+"="+ i*j;
+        }
+    }
+
+</script>
+</body>
+</html>

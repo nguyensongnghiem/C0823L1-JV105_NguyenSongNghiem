@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Chuyển đổi tiền tệ</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            display: inline-block;
+            min-width: 100px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<label class="label">Amount : </label>
+<input type="number" id="amount">
+<label class="label">From Currency : </label>
+<select id="fr-country">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+</select>
+<label class="label">To Currency : </label>
+<select id="to-country">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+</select>
+<button onclick="exchangeMoney()"> Convert  </button>
+<br>
+<label class="label"> Result :</label>
+<span id="result-txt"></span>
+<script>
+    function exchangeMoney(){
+        const EXC = 23000 ;
+        let amountValue = parseInt(document.getElementById("amount").value);
+        let frCurr = document.getElementById("fr-country").value;
+        let toCurr = document.getElementById("to-country").value;
+        let equal;
+
+        switch (frCurr){
+            case "VND":
+            {
+                if (toCurr === "VND") {equal=amountValue}
+                else {equal= amountValue/EXC}
+                break;
+            }
+            case "USD":
+            {
+                if (toCurr === "USD") {equal=amountValue}
+                else {equal = amountValue*EXC}
+            }
+        }
+        document.getElementById("result-txt").innerText= equal;
+    }
+</script>
+</body>
+</html>

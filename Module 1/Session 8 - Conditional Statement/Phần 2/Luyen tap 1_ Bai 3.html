@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check số nguyên </title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+
+        }
+    </style>
+</head>
+<body>
+<label class="label"> Nhập số nguyên : </label>
+<input type="number" id="a">
+
+<button onclick="check()"> Check ! </button>
+<br>
+<label class="label"> Result :</label>
+<span id="result"></span>
+<script>
+    function check(){
+        let a = parseFloat($("#a").val());
+        if ((a%1)!= 0) {
+            alert("Số nhập không phải số nguyên");
+        }
+        else if (a>0){
+            $('#result').text(" a lớn hơn 0");
+        }
+        else if (a<0){
+            $('#result').text(" a nhỏ hơn 0");
+        }
+        else if (a==0){
+            $('#result').text(" a bằng 0");
+        }
+
+        if (a%b===0) {
+            $('#result').text(" a chia hết cho b");
+        }
+        else {
+            $('#result').text(" a không chia hết cho b");
+        }
+    }
+</script>
+</body>
+</html>

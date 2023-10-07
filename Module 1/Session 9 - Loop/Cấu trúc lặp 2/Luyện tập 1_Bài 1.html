@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số nguyên tố</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<h3>Luyện tập 1- Bài 1 </h3>
+<script>
+
+    let count=0;
+    for (let i=1;i<=100;i++){
+        document.writeln(i);
+        if (i===99) {
+            alert("Đã hoàn thành")
+        }
+    }
+
+    function CheckSoNguyenTo(a) {
+        let checked = true;
+        for (let j=2;j<a;j++) {
+            if ((a % j)===0) {
+                checked = false ;
+                break;
+            }
+        }
+        return checked;
+    }
+
+</script>
+</body>
+</html>

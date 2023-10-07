@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Calculator</title>
+    <style>
+        *{
+            margin: .5em;
+            box-sizing: border-box;
+        }
+        .label{
+            display: inline-block;
+            font-weight: bold;
+        }
+        .display{
+            background-color: moccasin;
+            display: block;
+            width: 410px;
+            height: 40px;
+            padding: 0;
+            text-align: end;
+            border-style: ridge;
+        }
+        .btn{
+            margin: .2em;
+            width: 50px;
+            height: 40px;
+            padding: 1em auto;
+            text-align: center;
+            border-radius: 20%;
+        }
+        .btn:hover{
+            background-color: white;
+        }
+        .btn-numb{
+            background-color: ivory;
+                }
+        .btn-blue{
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<p type="text" id="display" class="display" readonly> </p>
+<br>
+<div class="btn-container">
+    <button onclick="rad()" class="btn btn-opr" data-operator="rad"> Rad </button>
+    <button class="btn btn-opr" > None </button>
+    <button onclick="pw10()" class="btn btn-opr"> x! </button>
+    <button onclick="leftBracket()" class="btn btn-opr" data-operator="("> ( </button>
+    <button onclick="rightBracket()" class="btn btn-opr" data-operator=")"> ) </button>
+    <button onclick="percentage()" class="btn btn-opr" data-operator="%"> % </button>
+    <button onclick="clear()" class="btn btn-opr" > AC </button>
+    <br>
+    <button onclick="inv()" class="btn btn-opr" > Inv </button>
+    <button onclick="sin()" class="btn btn-opr" > Sin </button>
+    <button onclick="ln()" class="btn btn-opr" > ln </button>
+    <button onclick="seven()" class="btn btn-numb" data-number="7" > 7 </button>
+    <button onclick="eight()" class="btn btn-numb" data-number="8"> 8 </button>
+    <button onclick="nine()" class="btn btn-numb" data-number="9"> 9 </button>
+    <button onclick="div()" class="btn btn-opr" > &divide; </button>
+
+    <br>
+    <button onclick="pi()" class="btn btn-opr" > &pi; </button>
+    <button onclick="cos()" class="btn btn-opr" > Cos </button>
+    <button onclick="log()" class="btn btn-opr" > log </button>
+    <button onclick="four()" class="btn btn-numb" > 4 </button>
+    <button onclick="five()" class="btn btn-numb" > 5 </button>
+    <button onclick="six()" class="btn btn-numb" > 6 </button>
+    <button onclick="mul()" class="btn btn-opr" > &times; </button>
+    <br>
+    <button onclick="ex()" class="btn btn-opr" > e</button>
+    <button onclick="tan()" class="btn btn-opr" > tan </button>
+    <button onclick="sqr()" class="btn btn-opr" > &radic; </button>
+    <button onclick="one()" class="btn btn-numb" > 1 </button>
+    <button onclick="two()" class="btn btn-numb" > 2 </button>
+    <button onclick="three()" class="btn btn-numb" > 3 </button>
+    <button onclick="sub()" class="btn btn-opr" data-operator="-"> - </button>
+    <br>
+    <button onclick="ans()" class="btn btn-opr" > Ans </button>
+    <button onclick="exp()" class="btn btn-opr" > EXP </button>
+    <button onclick="pow()" class="btn btn-opr" > x<sup >y</sup> </button>
+    <button onclick="zero" class="btn btn-numb" > 0 </button>
+    <button onclick="Point" class="btn btn-numb" > . </button>
+    <button onclick="equal()" class="btn btn-blue" > = </button>
+    <button onclick="add()" class="btn btn-opr" data-operator="+"> + </button>
+
+</div>
+<br>
+<script>
+    const numbButtons = document.querySelectorAll("[data-number]");
+    const ButtonPressed= e=>{
+        alert(e.target.id);
+    }
+    for (let numbButton of numbButtons){
+        numButton.addEventListener("click",ButtonPressed);
+    }
+    function act(ev){
+        console.log(ev.target.id);
+    }
+    // let x = parseFloat(document.getElementById("x").value);
+    // let y = parseFloat(document.getElementById("y").value);
+    function add(){
+        document.getElementById("display").innerText = document.getElementById("display").innerText +"+"
+    }
+    function sub(){
+        document.getElementById("display").innerText = document.getElementById("display").innerText +"-"
+    }
+
+    function mul(){
+        document.getElementById("display").innerText = document.getElementById("display").innerText +"x"
+    }
+    function div(){
+        document.getElementById("display").innerText = document.getElementById("display").innerText + "/"
+    }
+
+</script>
+</body>
+</html>

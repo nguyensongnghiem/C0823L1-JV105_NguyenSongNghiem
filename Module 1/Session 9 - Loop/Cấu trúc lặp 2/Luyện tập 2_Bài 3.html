@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In hình tam giác vuông </title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let n = 5;
+    // tăng dần
+    for (let i=1;i<=n;i++){
+        for (let j=1;j<=i;j++){
+            document.write("*");
+        }
+        document.writeln("<br>");
+    }
+    document.writeln("<br>");
+    // Giảm dần
+    for (let i=n;i>=1;i--){
+        for (let j=i;j>=1;j--){
+            document.write("*");
+        }
+        document.writeln("<br>")
+    }
+    document.writeln("<br>")
+
+    // tăng dần - ngược
+    for (let i=1;i<=n;i++){
+        for (let j=1;j<=n;j++){
+            if (j<=(n-i)){
+                document.write("&nbsp&nbsp");
+            } else document.write("*");
+        }
+        document.writeln("<br>");
+    }
+
+    // giảm  dần ngược
+    document.writeln("<br>");
+    for (let i=n;i>=1;i--){
+        for (let j=1;j<=n;j++){
+            if (j<=(n-i)){
+                document.write("&nbsp&nbsp");
+            } else document.write("*");
+        }
+        document.writeln("<br>");
+    }
+    document.writeln("<br>");
+</script>
+</body>
+</html>

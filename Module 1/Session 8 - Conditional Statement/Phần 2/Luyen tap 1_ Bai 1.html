@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check a % b</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+
+        }
+    </style>
+</head>
+<body>
+<label class="label"> Enter a : </label>
+<input type="number" id="a">
+<br>
+<label class="label"> Enter b : </label>
+<input type="number" id="b">
+<br>
+<button onclick="check()"> Check ! </button>
+<br>
+<label class="label"> Result :</label>
+<span id="result"></span>
+<script>
+    function check() {
+        let a = +$("#a").val();
+        let b = +$('#b').val();
+
+        if (a%b===0) {
+            $('#result').text(" a chia hết cho b");
+        }
+        else {
+            $('#result').text(" a không chia hết cho b");
+        }
+    }
+</script>
+</body>
+</html>

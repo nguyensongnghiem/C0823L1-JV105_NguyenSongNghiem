@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In hình chữ nhật </title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let n = 10, m=30 ;
+    // tăng dần
+    for (let row=1;row<=n;row++){
+        for (let col=1;col<=m;col++){
+            if (row===1||row===n) {
+                document.write("*");
+            }
+            else if (col===1||col===m){
+                document.write("*");
+            }
+            else document.write("&nbsp&nbsp");
+        }
+        document.writeln("<br>");
+    }
+</script>
+</body>
+</html>

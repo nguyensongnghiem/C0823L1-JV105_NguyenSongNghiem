@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In hình trái tim </title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let n=42;
+    // nửa trên
+    for (let x=n*15/100;x>=1;x--){
+        for (let i=1;i<=n-1;i++){
+            if ((i>(n/2-x)&&i<(n/2+x))||i<x||i>n-x) {
+                document.write("&nbsp&nbsp");
+            }
+            else document.write("*");
+        }
+        document.writeln("<br>");
+    }
+    // Nửa dưới
+    for (let i=n;i>=1;i--){
+        for (let j=1;j<=n;j++){
+            if (j<=(n-i)||j>=i){
+                document.write("&nbsp&nbsp");
+            } else document.write("*");
+        }
+        document.writeln("<br>");
+    }
+</script>
+</body>
+</html>

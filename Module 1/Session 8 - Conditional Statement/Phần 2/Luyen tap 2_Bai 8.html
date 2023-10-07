@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Kiểm tra tuổi </title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<label class="label">Nhập số tuổi : </label>
+<input type="number" id="a" onkeydown="keypress(event)">
+<br>
+<button onclick="Equal()"> Kiểm tra tuổi  </button>
+<br>
+<label class="label"> Kết quả : </label>
+<span id="equal"></span>
+<script>
+    function Equal(){
+        let age = parseInt(document.getElementById("a").value);
+        if ((age<120) && (age>0)) {
+            document.getElementById("equal").innerText= "Số nhập vào là tuổi";
+        }
+        else document.getElementById("equal").innerText= "Số nhập vào không phải là tuổi";
+    }
+    function keypress(e){
+        console.log(e.keyCode)
+        if (e.keyCode===13) {
+            Equal();
+        }
+    }
+
+</script>
+</body>
+</html>

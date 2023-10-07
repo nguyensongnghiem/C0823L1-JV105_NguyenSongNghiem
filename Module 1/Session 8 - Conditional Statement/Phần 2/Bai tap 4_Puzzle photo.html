@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .photo-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .row {
+            height: 200px;
+            width: 700px;
+            border: 5px ridge black;
+            background-size: 700px auto;
+        }
+
+        .row-1 {
+            background-position: 0 0;
+        }
+
+        .row-2 {
+            background-position: 0 -100px;
+        }
+
+        .row-3 {
+            background-position: 0 -200px;
+        }
+
+        .row-4 {
+            background-position: 0 -300px;
+        }
+    </style>
+</head>
+<body>
+<br>
+
+<div class="photo-container">
+    <div class="row row-1">
+    </div>
+    <div class="row row-2">
+    </div>
+    <div class="row row-3">
+    </div>
+    <div class="row row-4">
+    </div>
+</div>
+<br>
+
+<script>
+    $(document).ready(function () {
+
+        // set random image in start
+        $(".row").each(function () {
+            let i = Math.floor(Math.random() * 3) + 1;
+            $(this).css("background-image", "url('Photo/" + i + ".jpg')");
+        });
+        // Set the click event for every element
+        $(".row").each(function () {
+            $(this).on("click", function () {   // click handler
+                let url = "";
+                let alignCheck = true;
+                // 1. Set the random image to the element clicked
+                let j = Math.floor(Math.random() * 3) + 1;
+                $(this).css("background-image", "url('Photo/" + j + ".jpg')");
+
+                // 2. After click , go through all all elements and check if puzzle solved !
+                $(this).ready(function () {
+                    $(".row").each(function () {
+                        let currUrl = $(this).css("background-image");
+                        if (url === "") {
+                            url = currUrl;
+                        } else if ((currUrl === url) && (alignCheck === true)) {
+                            alignCheck = true;
+                        } else alignCheck = false;
+                    });
+                });
+                if (alignCheck === true) {
+                    setTimeout(() => {
+                        alert("You fucking done it !")
+                    }, 100)
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo form đơn giản</title>
+    <style>
+        label {
+            padding: 2px;
+            font-weight: bold;
+        }
+        input[type=checkbox] {
+            vertical-align: middle;
+            position: relative;
+            bottom: 1px;
+        }
+        fieldset{
+            border-style: solid;
+            width: fit-content;
+            background: antiquewhite;
+        }
+        .ckLabel {
+            display : inline-block;
+            width: 80px;
+            color: red;
+            font-weight: normal;
+        }
+        .btnHolder{
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+        }
+        input[type=text] {
+            vertical-align: middle;
+            padding: 3px;
+            border-style: inset;
+        }
+
+
+    </style>
+</head>
+<body>
+<form action="http://demo.codegym.vn/6/registration_form/register.php" method="get">
+    <fieldset>
+
+    <legend style="text-align: center; font-weight: bolder">SỞ THÍCH CỦA BẠN</legend><br>
+    <label >Họ và Tên :</label><br>
+    <input type="text" name="yourname"><br>
+    <label>Email :</label><br>
+    <input type="text" name="email"><br>
+    <label>Sở thích </label><br>
+        <div>
+            <input type="checkbox" name="hobby" value="sport">
+            <label class="ckLabel"> Thể thao</label>
+            <input type="checkbox" name="hobby" value="music">
+            <label class="ckLabel"> Âm nhạc</label>
+            <input type="checkbox" name="hobby" value="reading">
+            <label class="ckLabel"> Đọc sách</label> <br>
+            <input type="checkbox" name="hobby" value="internet">
+            <label class="ckLabel"> Lướt Web</label>
+            <input type="checkbox" name="hobby" value="gaming">
+            <label class="ckLabel"> Chơi game</label>
+            <input type="checkbox" name="hobby" value="movie">
+            <label class="ckLabel"> Điện ảnh</label><br>
+            <input type="checkbox" name="hobby" value="travel">
+            <label class="ckLabel"> Du lịch</label>
+        </div>
+    <br>
+    <div class="btnHolder">
+        <input style="padding: 3px; width: 100px" type="submit" value="Gửi thông tin">
+        <input style="padding: 3px; width: 100px" type="reset" value="Nhập lại">
+    </div>
+    </fieldset>
+
+</form>
+</body>
+</html>

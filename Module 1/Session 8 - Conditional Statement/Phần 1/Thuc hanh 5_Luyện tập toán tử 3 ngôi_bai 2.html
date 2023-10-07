@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check number</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        let mess = prompt("Enter message :  ?","");
+        result = (mess==="Employee") ? "Hello" : (mess==="Director")?"Greeting": (mess === "")?"No login": ""  ;
+        alert(result);
+    </script>
+    </body>
+</html>

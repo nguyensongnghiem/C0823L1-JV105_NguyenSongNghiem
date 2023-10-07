@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi ngân hàng</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let tienvay = parseFloat(prompt("Nhập tiền vay : "));
+    let laisuat = parseFloat(prompt("Nhập lãi suất / tháng (%): "))
+    let sothang = parseFloat(prompt("Nhập số tháng vay: "));
+    let laivay=0, tiengoc=tienvay;
+    for (let i=1;i<=sothang;i++){
+        document.writeln("<b>Tháng :" + i +": </b><br>");
+        document.writeln("&nbsp&nbsp  Tiền gốc:" + tiengoc +"VNĐ <br>");
+        laivay = tiengoc*laisuat/100;
+        document.writeln("&nbsp&nbsp Tiền lãi vay cần trả :" + laivay +"VNĐ <br>");
+        tiengoc=tiengoc+laivay;
+        document.writeln("<br> ");
+    }
+
+
+</script>
+</body>
+</html>

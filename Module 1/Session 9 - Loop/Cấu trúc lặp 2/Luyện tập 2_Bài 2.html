@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giai thừa của 1 số nguyên dương</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let result=1;
+    let n = parseInt(prompt("Nhập vào số nguyên dương cần tính giai thừa"));
+    if (n===0){
+        result=1;
+    }
+    else {
+        for (let i=1;i<=n;i++){
+            result*=i;
+        }
+    }
+        alert("Giai thừa của "+ n + " là : " + result);
+</script>
+</body>
+</html>

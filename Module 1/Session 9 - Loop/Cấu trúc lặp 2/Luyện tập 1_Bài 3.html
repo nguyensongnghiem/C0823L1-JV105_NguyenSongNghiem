@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số Fibonacci</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<h3>Bảng số Fibonacci</h3>
+<script>
+    let i=1;
+    let x=0;
+    let y=1;
+    let count=2;
+    document.writeln(x +";"+ y); // 1 1 đầu tiền
+     while (count<20){
+        if (i===(x+y)){
+            document.writeln(i +";");
+            x=y;
+            y=i;
+            count++;
+        }
+        i++;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng 20 Số Fibonacci đầu tiên</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #bangCuuChuong{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<h3>Bảng số Fibonacci</h3>
+<script>
+    let i=1;
+    let x=0;
+    let y=1;
+    let count=2;
+    let sum=1;
+    document.writeln(" 20 số Fibo đầu tiên : "+ x +";"+ y);
+     while (count<20){
+        if (i===(x+y)){
+            document.writeln(i +";");
+            x=y;
+            y=i;
+            sum+=i;
+            count++;
+            console.log(i);
+        }
+        i++;
+
+    }
+    document.writeln("<br> Tổng 20 số Fibo đầu tiên : "+ sum  ); // 1 1 đầu tiền
+</script>
+</body>
+</html>

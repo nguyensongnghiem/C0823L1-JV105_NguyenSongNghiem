@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        form {
+            width: fit-content;
+        }
+        legend{
+            color: blue;
+            font-size: large;
+            font-weight: bolder;
+        }
+        label {
+            color: red;
+            text-align: left;
+            font-family: Calibri;
+            font-weight: bolder;
+        }
+        textarea{
+            background-color: antiquewhite;
+            width: 500px;
+            height: 200px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <form name="CV" id="CV">
+        <fieldset form="CV">
+            <legend>Thông tin cá nhân</legend>
+            <label>Họ tên</label>
+            <input type="text" name="name"><br>
+            <label><b>Giới tính : </b> </label>
+            Male <input type="radio" name="male" id="male" >
+            Female <input type="radio" name="female" id="female"><br>
+            <label><b> Nghề nghiệp : </b> </label>
+            <select id="job" name="job">
+                <option value="Kỹ sư">Kỹ sư</option>
+                <option value="Bác s">Bác sĩ</option>
+                <option value="Giáo viên">Giáo Viên</option>
+            </select><br>
+
+            <p> <b>Mô tả bản thân: </b></p>
+            <textarea name="des">
+
+            </textarea>
+        </fieldset>
+    </form>
+<form>
+    <fieldset>
+        <legend>Login </legend>
+    <label><b>username :</b></label>
+    <input type="text" name="username"><br>
+    <label><b>password :</b></label>
+    <input type="password" name="password"><br>
+    <input type="submit"><br>
+    </fieldset>
+</form>
+</body>
+</html>

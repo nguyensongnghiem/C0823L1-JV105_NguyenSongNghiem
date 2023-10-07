@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Array methods - 1</title>
+</head>
+<body>
+    <script>
+    let length = prompt('Nhập vào độ dài mảng chuỗi : ');
+    let strArray =[length];
+    for (let i =0; i<length;++i){
+        strArray[i] = prompt('Nhập vào phần tử thứ' + i);
+    }
+    document.writeln('Mảng nhập vào là : '+ strArray +'<br>');
+    let str = strArray.join(' ; ');
+    document.writeln('Chuỗi sau khi join là : '+ str);
+
+    </script>
+</body>
+</html>

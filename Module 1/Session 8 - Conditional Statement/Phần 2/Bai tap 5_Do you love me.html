@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Do you love me ! </title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: bolder;
+        }
+        .btn-container{
+            position: relative;
+            display: block;
+            width: 100%;
+            text-align: center;
+            height: 50vh;
+        }
+        .btn{
+            text-align: center;
+            border: 1px solid black;
+        }
+        .btn-no{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<label class="label">DO YOU LOVE ME ??? </label>
+<br>
+<div class="btn-container">
+    <button onclick="clickYes()" class="btn btn-yes" > Yes </button>
+    <button onclick="clickNo()" class="btn btn-no" > No  </button>
+</div>
+
+<br>
+
+<script>
+
+    function clickYes(){
+        alert("<3")
+    }
+    function clickNo(){
+        let top = Math.floor(Math.random()*$('.btn-container').height());
+        console.log($('.btn-container').height());
+        let right = Math.floor(Math.random()* $('.btn-container').width());
+        // console.log(top)
+        $(".btn-no").css('right',right,);
+        $(".btn-no").css('top',top );
+    }
+</script>
+</body>
+</html>

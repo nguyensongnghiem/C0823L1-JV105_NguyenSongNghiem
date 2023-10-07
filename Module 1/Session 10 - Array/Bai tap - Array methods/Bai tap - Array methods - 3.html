@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Array methods - 3</title>
+</head>
+<body>
+    <script>
+    let str = prompt('Nhập vào một dãy ký tự : ').split("");
+    let newStr = [];
+    str.forEach(function(value,index ) { 
+        if (value===value.toUpperCase())
+            newStr.push(value.toLowerCase())
+        else 
+            newStr.push(value.toUpperCase())
+    });
+    alert(newStr);
+    console.log(newStr);
+    console.log(newStr.join(''));
+    </script>
+</body>
+</html>

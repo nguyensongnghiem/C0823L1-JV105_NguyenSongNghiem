@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Điểm Sinh viên</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<label class="label">Điểm Vật lý: </label>
+<input type="number" id="phys-score">
+<br>
+<label class="label">Điểm Hóa Học: </label>
+<input type="number" id="chem-score">
+<br>
+<label class="label">Điểm Sinh Học: </label>
+<input type="number" id="bio-score">
+<br>
+<button onclick="calc()"> Điểm trung bình </button>
+<br>
+<label> Điểm Trung bình : </label>
+<span id="result"></span>
+<script>
+    function calc(){
+        let physScore = parseInt(document.getElementById("phys-score").value);
+        let chemScore = parseInt(document.getElementById("chem-score").value);
+        let bioScore = parseInt(document.getElementById("bio-score").value);
+        let result = (physScore + bioScore + chemScore)/3;
+        document.getElementById("result").innerText= result;
+    }
+</script>
+</body>
+</html>

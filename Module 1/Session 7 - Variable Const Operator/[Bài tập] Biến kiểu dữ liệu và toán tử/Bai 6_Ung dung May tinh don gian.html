@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<input type="number" id="x"> 
+<input type="number" id="y">
+<br>
+    <button onclick="add()"> Add ( + ) </button>
+<button onclick="sub()"> Sub ( - ) </button>
+<button onclick="mul()"> Mul ( * ) </button>
+<button onclick="div()"> Div ( / ) </button>
+<br>
+<label class="label"> Result : </label>
+<span id="equal"></span>
+<script>
+    // let x = parseFloat(document.getElementById("x").value);
+    // let y = parseFloat(document.getElementById("y").value);
+    function add(){
+        let x = parseFloat(document.getElementById("x").value);
+        let y = parseFloat(document.getElementById("y").value);
+        document.getElementById("equal").innerText= x+y;
+    }
+    function sub(){
+        let x = parseFloat(document.getElementById("x").value);
+        let y = parseFloat(document.getElementById("y").value);
+        document.getElementById("equal").innerText= x-y;
+    }
+
+    function mul(){
+        let x = parseFloat(document.getElementById("x").value);
+        let y = parseFloat(document.getElementById("y").value);
+        document.getElementById("equal").innerText= x*y;
+    }
+    function div(){
+        let x = parseFloat(document.getElementById("x").value);
+        let y = parseFloat(document.getElementById("y").value);
+        document.getElementById("equal").innerText= x/y;
+    }
+</script>
+</body>
+</html>

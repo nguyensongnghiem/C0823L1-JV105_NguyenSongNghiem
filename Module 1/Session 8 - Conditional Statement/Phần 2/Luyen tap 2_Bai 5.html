@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Diện tích hình tam giác vuông </title>
+    <style>
+        *{
+            margin: .5em;
+        }
+        .label{
+            display: inline-block;
+            min-width: 200px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<label class="label">Nhập chiều dài cạnh a hình tam giác vuông (m) : </label>
+<input type="number" id="a" onkeydown="keypress(event)">
+<br>
+<label class="label">Nhập chiều dài cạnh b hình tam giác vuông (m) : </label>
+<input type="number" id="b" onkeydown="keypress(event)">
+<br>
+<button onclick="Equal()"> Calc ! </button>
+<br>
+<label class="label"> Diện tích hình tam giác vuông : </label>
+<span id="equal"></span>
+<script>
+    function Equal(){
+        let a = parseInt(document.getElementById("a").value);
+        let b = parseInt(document.getElementById("b").value);
+        document.getElementById("equal").innerText = (a*b)/2 + " m2";
+    }
+    /// enter để tính
+    function keypress(e){
+        if (e.keyCode===13) {
+            Equal();
+        }
+    }
+
+</script>
+</body>
+</html>
