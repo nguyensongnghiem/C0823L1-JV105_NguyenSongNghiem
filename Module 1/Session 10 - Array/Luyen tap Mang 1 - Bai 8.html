@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=scr, initial-scale=1.0">
-    <title>Luyen tap mang 1 - Bai 8</title>
+    <title>Lueyn tap mang 1 - Bai 8</title>
 </head>
 <body>
     <script>
-        const arrA = [10];
-        const arrB = [10];
+        let arr = [10];
         for (i=0;i<10;i++) {
-            arrA[i]= (Math.floor(Math.random()*10)+1);
+            arr[i]= Math.floor(Math.random()*10)+1;
         }
-        for (i=0;i<10;i++) {
-            arrB[i]= (Math.floor(Math.random()*10)+1);
-        }
-        let arrC = [].concat(arrA,arrB)
-        document.writeln ('Mảng A : '+ arrA +'<br>')
-        document.writeln ('Mảng B: '+ arrB +'<br>')
-        document.writeln ('Mảng C : '+ arrC +'<br>')
+        document.writeln ('Array : ' + arr.join('-') +'<br>')
+        let sortedArr =  arr.sort((a,b)=>{
+            return b-a;
+        })
+        document.writeln ('Mảng sau khi sắp xếp  : ' + sortedArr)
     </script>
 </body>
 </html>
