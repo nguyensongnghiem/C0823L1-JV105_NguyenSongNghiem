@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cờ Caro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        *{
+            margin: .5em;
+            box-sizing: border-box;
+            padding: 0px;
+            margin: 0px;
+        }
+        .label{
+            font-weight: bolder ;
+            display: inline-block;
+            min-width: 250px;
+            color: red;
+        }
+        #chessBoard{
+            border: 1px solid black;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        td {
+       
+            width: 50px;  
+            height: 50px;  
+            border: 1px double black;
+            border-collapse: collapse;
+            text-align: center;
+            vertical-align: middle;            
+            font-weight: bold;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1> CROSS & ZERO BOARD </h1>
+    <table id="chessBoard" class="table-border shadow-lg" >
+    </table>
+</div>
+<script>
+  
+    nextTurn = true;
+    let size = 10;
+    let chessBoard = document.getElementById("chessBoard");
+    let chessArr= [];
+    // Create the board
+    for (let i=0;i<size;i++){
+        let row = chessBoard.insertRow(-1);
+        for (let j=0;j<size;j++){
+            let cell = row.insertCell(-1);                
+            cell.innerHTML= ' ';
+        }
+    }
+
+    for (row of chessBoard.rows){
+        for (cell of row.cells) {        
+            cell.style.cursor = 'pointer'
+            cell.addEventListener('click',tick);                 
+        }
+    }
+    boardInit(size);  
+    // Add event click to every cell
+    for (row of chessBoard.rows){
+        for (cell of row.cells) {        
+            cell.style.cursor = 'pointer'
+            cell.addEventListener('click',tick);                 
+        }
+    }
+
+    // ------------ Function tick--------------------------
+    function tick() {
+        if (this.innerHTML===' ') {
+            switch (nextTurn) {
+            case true :
+                this.innerHTML = 'X';
+                this.classList.add('table-primary');
+                nextTurn = false;
+                break;
+            case false : 
+                this.innerHTML = 'O';
+                this.classList.add('table-success');
+                nextTurn = true;
+                break;                            
+        }      
+        // Get the table to array
+        for (row of chessBoard.rows) {
+            for (cell of row.cells) {            
+               chessArr[row.rowIndex][cell.cellIndex] = cell.innerHTML;               
+            }
+        }
+        // the positon of clicked cell
+        let rowClick = this.parentElement.rowIndex
+        let colClick = this.cellIndex
+        // Check hang ngang va hang doc 
+        if (winCheck (rowClick,colClick)) {
+                setTimeout(function(){alert(boardReset())},200)
+                
+        }
+        }
+    }    
+
+// --------------- board init ---------------
+    function boardInit(size) {
+        for (let i=0;i<size;++i) {
+            chessArr.push(new Array(size).fill(-1));
+        }
+        console.log(chessArr);
+    
+    }  
+    function boardReset() {
+        // chessArr=[]
+        nextTurn = true;
+        for (let i=0;i<size;++i) {
+            for (let j=0;j<size;++j) {                                 
+                chessArr[i][j] = -1   
+            }
+        }
+        console.log(chessArr);
+        for (row of chessBoard.rows) {
+            for (cell of row.cells) {            
+               cell.innerHTML = ' ';   
+               cell.classList.remove('table-danger', 'table-primary', 'table-success')                           
+            }
+        }
+        return 'We have a Winner !'
+    }
+    function winCheck (rowClick,colClick) {
+        if (rowCheck(rowClick) !==-1) {
+            let matchCord = rowCheck(rowClick)    
+            for (let i=0;i<3;i++) {
+                console.log(matchCord)
+                chessBoard.rows[matchCord[i][0]].cells[matchCord[i][1]].classList.add('table-danger');
+            }
+            return true;
+        }
+        else if (colCheck(colClick) !==-1) {
+            let matchCord = colCheck(colClick)    
+            for (let i=0;i<3;i++) {
+                console.log(matchCord)
+                chessBoard.rows[matchCord[i][0]].cells[matchCord[i][1]].classList.add('table-danger');
+            }
+            return true;
+        }
+        else if (crossCheck1(rowClick,colClick) !==-1) {
+            let matchCord = crossCheck1(rowClick,colClick)    
+            for (let i=0;i<3;i++) {
+                console.log(matchCord)
+                chessBoard.rows[matchCord[i][0]].cells[matchCord[i][1]].classList.add('table-danger');
+            }
+            return true;
+        }   
+        else if (crossCheck2(rowClick,colClick) !==-1) {
+            let matchCord = crossCheck2(rowClick,colClick)    
+            for (let i=0;i<3;i++) {
+                console.log(matchCord)
+                chessBoard.rows[matchCord[i][0]].cells[matchCord[i][1]].classList.add('table-danger');
+            }
+            return true;
+        }
+        else return false
+    }
+    
+    // Check hàng ngang 
+    function rowCheck(row) {     
+        let str=[]; 
+        let matchCord=[]; 
+        for (let i=0;i<size;++i) {
+            if ((str.length ===3) && (matchCord.length===3)) {
+                str.shift()
+                matchCord.shift()                    
+            }
+            str.push(chessArr[row][i]);      
+            matchCord.push([row,i])
+            if (str.join('')==='XXX' || str.join('')==='OOO') {
+                return matchCord
+            } 
+        }       
+        return -1;
+        str=[]
+        matchCord=[]
+    }
+    // Check hàng dọc 
+    function colCheck (col){
+        let str=[]; 
+        let matchCord=[]; 
+        for (let i=0;i<size;++i) {
+            if ((str.length ===3) && (matchCord.length===3)) {
+                str.shift()
+                matchCord.shift()                    
+            }
+            str.push(chessArr[i][col]);      
+            matchCord.push([i,col])
+            if (str.join('')==='XXX' || str.join('')==='OOO') {
+                return matchCord
+            } 
+        }       
+        return -1;
+        str=[]
+        matchCord=[]
+    }
+
+    // Check đường chéo
+    function crossCheck1 (row,col){
+        let str=[];       
+        let matchCord=[]; 
+        // Duyet qua duong cheo thuan
+        
+        for (let i=0;i<size;++i) {
+            for (let j=0;j<size;++j) {                                 
+                if (i-(+row) === j-(+col)) {
+                    if ((str.length ===3) && (matchCord.length===3)) {
+                        str.shift()
+                        matchCord.shift()
+                    }                       
+                    str.push(chessArr[i][j]);
+                    matchCord.push([i,j])
+                    // console.log('str length:' + str.length);
+                    if (str.join('')==='XXX' || str.join('')==='OOO') {
+                        console.log('win')
+                        return matchCord
+                    } 
+                }   
+            }
+        }
+        return -1;
+    }
+
+    function crossCheck2 (row,col) {
+        let str=[];       
+        let matchCord=[]; 
+        // Duyet qua duong cheo nghich
+        
+        for (let i=0;i<size;++i) {
+            for (let j=0;j<size;++j) {                                 
+                if (i-(+row) === -(j-(+col))) {
+                    if ((str.length ===3) && (matchCord.length===3)) {
+                        str.shift()
+                        matchCord.shift()
+                    }                       
+                    str.push(chessArr[i][j]);
+                    matchCord.push([i,j])
+                    console.log('str :' + str.join(''));
+                    console.log('matchcord :' + matchCord);
+                    if (str.join('')==='XXX' || str.join('')==='OOO') {
+                        console.log('win')
+                        return matchCord
+                    } 
+                }   
+            }
+        }
+        return -1;
+    }
+    
+</script>
+</body>
+</html>

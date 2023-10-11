@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Luyen tap mang 2 - Bai 1</title>
+</head>
+<body>
+    <script>
+        let arr =[];
+        let x = 5,y = 10;
+        for (let i=0;i<x;i++) {
+                arr.push(new Array(y));
+        }
+        for (i=0;i<x;i++){
+            for (j=0;j<y;j++){
+                arr[i][j]= (Math.floor(Math.random()*10)+1);
+            }
+        }
+        console.log(arr)
+        document.writeln ('Mảng  : '+ arr +'<br>')
+        for (i=0;i<x;i++){
+            document.writeln ('Row '+ i +'<br>')
+            for (j=0;j<y;j++){
+            document.writeln (arr[i][j] +'<br>')
+            }
+        }
+      
+    </script>
+</body>
+</html>

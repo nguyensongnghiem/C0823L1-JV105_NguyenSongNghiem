@@ -16,9 +16,9 @@
     <fieldset style="width: fit-content">
         <legend><b> Nhập thông tin đăng ký</b></legend>
         <label class="form-label">Họ và Tên :</label><br>
-        <input type="text" name="name" class="form-control"><br>
+        <input required minlength="8" type="text" name="name" class="form-control" aria-describedby="name-required"><br>
         <label>Email :</label><br>
-        <input type="text" name="email" class="form-control"><br>
+        <input required type="email" name="email" class="form-control"><br>
         <label class="form-label">Số điện thoại : </label><br>
         <input type="text" name="phone" class="form-control"><br>
         <label class="form-label">Giới tính</label><br>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Lueyn tap mang 2 - Bai 2</title>
+</head>
+<body>
+    <script>
+        let arr = [10];
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        for (i=0;i<10;i++) {
+            arr[i]= characters.charAt(Math.floor(Math.random()*charactersLength));
+        }
+        document.writeln ('Array : ' + arr.join('-') +'<br>')
+        document.writeln ('Reversed Array : ' + arr.reverse().join('-') +'<br>')
+    </script>
+</body>
+</html>

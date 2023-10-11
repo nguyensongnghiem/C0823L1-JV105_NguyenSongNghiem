@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Lueyn tap mang 2 - Bai 4</title>
+</head>
+<body>
+    <script>
+  
+        let arr = prompt('Nhập vào 1 chuỗi : ').split('')
+        console.log(arr)
+        let result = arr.reduce( function(count,value) {
+            if (value>='A' && value<='z') {
+                return count+1;
+            }
+            return count;
+        },0)
+
+        document.writeln ('Array : ' + arr.join('-') +'<br>')
+        document.writeln ('Số từ trong chuỗi là : ' + result +'<br>')
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Lueyn tap mang 1 - Bai 2</title>
+</head>
+<body>
+    <script>
+        let arr = [10];
+        for (i=0;i<10;i++) {
+            arr[i]= Math.floor(Math.random()*10)+1;
+        }
+        document.writeln ('Array : ' + arr.join('-') +'<br>')
+        let max = arr[0]
+        let maxIndex = [];
+        arr.forEach(function(value,index,array){
+            if (value>max) {
+                max=value;                
+            }
+        })
+        arr.map(function(value,index,array) {
+            if (value===max){
+                maxIndex.push(index)
+
+            }
+       });
+        document.writeln ('Số lớn nhất trong mảng : ' + max + ' tại vị trí: ' + maxIndex)
+    </script>
+</body>
+</html>

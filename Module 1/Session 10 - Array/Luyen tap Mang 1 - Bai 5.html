@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Lueyn tap mang 1 - Bai 5</title>
+</head>
+<body>
+    <script>
+        let input = prompt('Nhập vào 1 chuỗi :')
+        let arr = input.split('')
+        let newArr = arr.filter(function(value,index,array){
+            if(value ==='+' || value==='-' || (value>=0)&&value<=9){
+                return value
+            }
+        })
+        let count =0;
+        newArr.filter(function(value,index,array){
+            if (value==='-' && isNaN(array[index+1])===false) {
+                count++;
+            }
+        })
+        document.writeln ('Chuỗi ban đầu : ' + arr.join('') +'<br>')
+        // document.writeln ('Chuỗi số only : ' + newArr.join('') +'<br>')
+        document.writeln ('Số lượng số nguyên âm  : ' + count)
+    </script>
+</body>
+</html>

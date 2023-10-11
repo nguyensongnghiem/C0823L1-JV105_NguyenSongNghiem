@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Lueyn tap mang 2 - Bai 3</title>
+</head>
+<body>
+    <script>
+        let arr = [10];
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        for (i=0;i<10;i++) {
+            arr[i]= characters.charAt(Math.floor(Math.random()*charactersLength));
+        }
+        console.log(arr)
+        let result = arr.reduce( function(count,value) {
+            if (value>=0 && value<=9) {
+                return count+1;
+            }
+            return count;
+        },0)
+
+        document.writeln ('Array : ' + arr.join('-') +'<br>')
+        document.writeln ('Số ký tự số trong mảng : ' + result +'<br>')
+    </script>
+</body>
+</html>

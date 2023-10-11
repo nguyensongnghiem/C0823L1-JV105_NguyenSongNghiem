@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Luyen tap mang 1 - Bai 7</title>
+</head>
+<body>
+    <script>
+        let arr = [10];
+        for (i=0;i<10;i++) {
+            arr[i]= (Math.floor(Math.random()*10)+1);
+        }
+        document.writeln ('Auto generated Array : ' + arr.join(';') +'<br>')
+        let numb = +prompt('Nhập vào số nguyên cần xóa :')
+        while (arr.includes(numb)) {
+            arr.splice(arr.indexOf(numb),1)
+            arr.push('0')
+            document.writeln ('deleting..<br>')
+        }
+        document.writeln ('Mảng sau khi xóa ' + numb  + ': '+ arr +'<br>')
+    </script>
+</body>
+</html>

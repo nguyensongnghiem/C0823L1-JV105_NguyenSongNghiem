@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Luyen tap Mang 1 - Bai 1</title>
+</head>
+<body>
+    <script>
+        let arr = [10];
+        for (i=0;i<10;i++) {
+            arr[i]= Math.floor(Math.random()*100)+1;
+        }
+        document.writeln ('Array : ' + arr.join('-') +'<br>')
+        let result = arr.filter(function(value,index,array){
+            return value>=10;
+        })
+
+        document.writeln ('Các tất cả '+ result.length + ' số lớn hơn hoặc = 10 trong chuỗi  : ' + result.join('-'))
+
+    </script>
+</body>
+</html>
