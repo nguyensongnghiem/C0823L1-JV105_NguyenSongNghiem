@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stars</title>
+  </head>
+  <body>
+    <script>
+      let star = prompt("Enter a star name : ");
+      alert(findStar(star));
+      //function
+      function findStar(star) {
+        const stars = [
+          "Polaris",
+          "Aldebaran",
+          "Deneb",
+          "Vega",
+          "Altair",
+          "Dubhe",
+          "Regulus",
+        ];
+        const constellations = [
+          "Ursa Minor",
+          "Tarurus",
+          "Cygnus",
+          "Lyra",
+          "Aquila",
+          "Ursa Major",
+          "Leo",
+        ];
+        let index = stars.indexOf(star);
+        console.log(index, constellations[index]);
+        return index !== -1
+          ? "The constellation of the " + star + " is " + constellations[index]
+          : "Not a star";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đảo ngược mảng số nguyên</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      let input = 0;
+      while (!isNaN(input)) {
+        input = +prompt(
+          "Nhập số nguyên vào mảng (nhập ký tự chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input)) {
+          arr.push(input);
+        }
+      }
+      console.log("array : " + arr);
+      document.writeln(" Before : " + arr + "<br>");
+      document.writeln(" After : " + revertArr(arr) + "<br>");
+      // Hàm
+      function revertArr(inputArr) {
+        let result = [];
+        inputArr.forEach((value) => {
+          result.unshift(value);
+        });
+        return result;
+      }
+    </script>
+  </body>
+</html>

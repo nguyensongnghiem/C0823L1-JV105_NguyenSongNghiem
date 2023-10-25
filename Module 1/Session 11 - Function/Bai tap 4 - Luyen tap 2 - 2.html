@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hàm tính diện tích, hàm tính chu vi hình tròn</title>
+  </head>
+  <body>
+    <script>
+      let rad = +prompt("Nhập vào bán kính hình tròn : ");
+      alert("Diện tích hình tròn : " + areaCircle(rad));
+      alert(" Chu vị hình tròn : " + squareCircle(rad));
+      function areaCircle(rad) {
+        return isNaN(rad) ? "Not a number" : Math.PI * Math.pow(rad, 2);
+      }
+      function squareCircle(rad) {
+        return isNaN(rad) ? "Not a number" : 2 * Math.PI * rad;
+      }
+    </script>
+  </body>
+</html>

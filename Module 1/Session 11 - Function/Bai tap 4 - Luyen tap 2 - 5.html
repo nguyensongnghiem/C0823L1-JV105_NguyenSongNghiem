@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm số nhỏ nhất</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      arr.push(+prompt("Nhập vào số a : "));
+      arr.push(+prompt("Nhập vào số b : "));
+      arr.push(+prompt("Nhập vào số c : "));
+      alert("Số nhỏ nhất là : " + smallestNumb(...arr));
+      // Hàm kiểm tra ký tự số
+      function smallestNumb(...arr) {
+        return arr.sort((a, b) => a - b)[0];
+      }
+    </script>
+  </body>
+</html>

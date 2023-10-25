@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hàm tính giai thừa của số nguyên</title>
+  </head>
+  <body>
+    <script>
+      let input = +prompt("Nhập vào số nguyên : ");
+      if (factorial(input) !== -1) {
+        alert("Giai thừa của " + input + " : " + factorial(input));
+      } else alert("Số nhập vào không phải số nguyên dương");
+
+      // Hàm tính giai thừa
+      function factorial(number) {
+        let factorial = 1;
+        if (number < 0 || number % 1 !== 0) {
+          return -1;
+        } else {
+          for (let i = 1; i <= number; i++) {
+            factorial = factorial * i;
+          }
+          return factorial;
+        }
+      }
+    </script>
+  </body>
+</html>

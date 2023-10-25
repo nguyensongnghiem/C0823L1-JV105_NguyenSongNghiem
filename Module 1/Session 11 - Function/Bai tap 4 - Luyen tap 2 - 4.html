@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiểm tra ký tự</title>
+  </head>
+  <body>
+    <script>
+      let input = prompt("Nhập vào ký tự bất kỳ: ");
+
+      alert(
+        isNumbChar(input)
+          ? "Số nhập vào là ký tự số"
+          : "Số nhập vào không phải ký tự số"
+      );
+      // Hàm
+      function isNumbChar(char) {
+        return char >= "0" && char <= "9" ? true : false;
+      }
+    </script>
+  </body>
+</html>

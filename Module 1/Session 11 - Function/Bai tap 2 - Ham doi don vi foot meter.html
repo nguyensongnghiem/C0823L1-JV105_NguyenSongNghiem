@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>feet and meter converter</title>
+  </head>
+  <body></body>
+  <script>
+    let input = prompt("Enter a number ");
+    document.writeln("Meter to foot : " + meterToFoot(input) + "<br>");
+    document.writeln("Foot to meter : " + footToMeter(input));
+
+    //  function
+    function footToMeter(foot) {
+      return 0.305 * foot;
+    }
+    function meterToFoot(meter) {
+      return 3.279 * meter;
+    }
+  </script>
+</html>

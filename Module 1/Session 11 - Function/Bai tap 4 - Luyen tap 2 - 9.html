@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm số lần xuất hiện của ký tư trong mảng</title>
+  </head>
+  <body>
+    <script>
+      let inputArr = prompt("Nhập vào mảng ký tự : ").split("");
+      let inputChar = prompt("Nhập vào ký tự cần tìm trong mảng: ");
+      document.writeln(" Mảng ký tự : " + inputArr + "<br>");
+      document.writeln("Ký tự cần tìm : " + inputChar + "<br>");
+      document.writeln(
+        "Số lần xuất hiện trong mảng : " + findChar(inputArr, inputChar)
+      );
+      // Hàm
+      function findChar(charArr, char) {
+        let newArr = [...charArr];
+        let result = newArr.reduce((count, value, index) => {
+          return char === value ? count + 1 : count;
+        }, 0);
+        return result === 0 ? -1 : result;
+      }
+    </script>
+  </body>
+</html>

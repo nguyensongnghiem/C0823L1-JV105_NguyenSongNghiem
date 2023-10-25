@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <style>
+      * {
+        margin: 0.5em;
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+      }
+      .label {
+        font-weight: bolder;
+        display: inline-block;
+        min-width: 150px;
+      }
+      #productTable {
+        border: 1px solid black;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+      th {
+        width: 200px;
+        height: 50px;
+        border: 1px double black;
+        border-collapse: collapse;
+        text-align: center;
+        vertical-align: middle;
+        font-weight: bold;
+      }
+      td {
+        width: 50px;
+        height: 50px;
+        border: 1px double black;
+        border-collapse: collapse;
+        text-align: center;
+        vertical-align: middle;
+        font-weight: bold;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>PRODUCT MANAGE</h1>
+      <!-- Product change  -->
+      <div class="input-group mb-3">
+        <label class="input-group-text col-1">Name</label>
+        <input class="form-control col-3" type="text" id="productName" />
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text col-1">Price</label>
+        <input class="form-control col-3" type="text" id="productPrice" />
+      </div>
+      <div class="input-group mb-4">
+        <button class="btn btn-primary" id="addButton" onclick="handleAdd()">
+          Add
+        </button>
+      </div>
+
+      <table id="productTable" class="table table-bordered">
+        <tr class="table-info">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Add</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+    </div>
+    <script>
+      const productTable = document.getElementById("productTable");
+      const products = [
+        { name: "Iphone", price: 800 },
+        { name: "Airpod", price: 200 },
+        { name: "Samsung S22", price: 700 },
+      ];
+
+      renderTable();
+      // render the Products table
+      function renderTable() {
+        products.map((product, index, products) => {
+          let row = productTable.insertRow(-1);
+          row.insertCell(-1).innerText = index + 1;
+          productArray = Object.values(product);
+          for (j = 0; j < productArray.length; j++) {
+            row.insertCell(-1).innerText = productArray[j];
+          }
+          // Add Edit button
+          let editBtn = document.createElement("button");
+          editBtn.className = "btn btn-primary";
+          editBtn.innerText = "Edit";
+          editBtn.onclick = handleEdit;
+          row.insertCell(-1).appendChild(editBtn);
+          // Add Edit button
+          let deleteBtn = document.createElement("button");
+          deleteBtn.className = "btn btn-danger";
+          deleteBtn.innerText = "Delete";
+          deleteBtn.onclick = handleDelete;
+          row.insertCell(-1).appendChild(deleteBtn);
+        });
+      }
+
+      function deleteTable() {
+        let rows = productTable.rows;
+        if (rows.length > 1) {
+          for (let i = 1; i <= rows.length; i++) {
+            console.log(i);
+            rows[i].remove();
+          }
+        }
+      }
+      function insertRow(product, index) {
+        let row = productTable.insertRow(index);
+        row.insertCell(-1).innerText = index + 1;
+        productArray = Object.values(product);
+        for (j = 0; j < productArray.length; j++) {
+          row.insertCell(-1).innerText = productArray[j];
+        }
+        // Add Edit button
+        let editBtn = document.createElement("button");
+        editBtn.className = "btn btn-primary";
+        editBtn.innerText = "Edit";
+        editBtn.onclick = handleEdit;
+        row.insertCell(-1).appendChild(editBtn);
+        // Add Edit button
+        let deleteBtn = document.createElement("button");
+        deleteBtn.className = "btn btn-danger";
+        deleteBtn.innerText = "Delete";
+        deleteBtn.onclick = handleDelete;
+        row.insertCell(-1).appendChild(deleteBtn);
+      }
+      // Product change function
+
+      function addProduct(product) {
+        products.push(product);
+        console.log("products after add:", products);
+      }
+
+      function deleteProduct(index) {
+        products.splice(products, index);
+        console.log("products after delete:", products);
+      }
+
+      // Table change function
+      function rowDelete(index) {
+        productTable.deleteRow(index);
+      }
+      function rowAdd(product) {
+        productTable.deleteRow(index);
+      }
+
+      // Handler function
+      function handleEdit() {
+        console.log("Edited");
+        console.log(this.parentElement.parentElement.rowIndex);
+        const productIndex = this.parentElement.parentElement.rowIndex;
+      }
+
+      function handleDelete() {
+        const productIndex = this.parentElement.parentElement.rowIndex;
+        deleteProduct(productIndex);
+        rowDelete(productIndex);
+      }
+      function handleAdd() {
+        const newProduct = {};
+        newProduct.name = document.getElementById("productName").value;
+        newProduct.price = document.getElementById("productPrice").value;
+        if (newProduct.name !== "" && newProduct.price !== "") {
+          addProduct(newProduct);
+          renderTable();
+        }
+      }
+    </script>
+  </body>
+</html>

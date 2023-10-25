@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hàm Kiểm tra số nguyên dương</title>
+  </head>
+  <body>
+    <script>
+      let input = +prompt("Nhập vào số : ");
+      alert(
+        isPositiveInt(input)
+          ? "Đây là số nguyên dương"
+          : "Đây không phải là số nguyên dương"
+      );
+      // Hàm tính giai thừa
+      function isPositiveInt(number) {
+        if (!isNaN(number)) {
+          return number < 0 || number % 1 !== 0 ? false : true;
+        } else return false;
+      }
+    </script>
+  </body>
+</html>

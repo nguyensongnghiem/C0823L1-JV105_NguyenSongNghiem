@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đổi chỗ 2 số nguyên</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      arr.push(+prompt("Nhập vào số a : "));
+      arr.push(+prompt("Nhập vào số b : "));
+      // Hàm
+      // console.log(arr1)
+      // console.log(arr2)
+      document.writeln(" Before : " + arr + "<br>");
+      swapNumber(arr);
+      document.writeln(" After : " + arr);
+      function swapNumber(arr) {
+        let tmp = arr[0];
+        arr[0] = arr[1];
+        arr[1] = tmp;
+      }
+    </script>
+  </body>
+</html>
