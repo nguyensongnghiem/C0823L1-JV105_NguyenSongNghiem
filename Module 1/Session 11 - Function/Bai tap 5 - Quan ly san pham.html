@@ -87,7 +87,7 @@
       </div>
 
       <table id="productTable" class="table table-bordered">
-        <tr class="table-info">
+        <tr class="table-primary">
           <th>ID</th>
           <th>Name</th>
           <th>Price</th>
@@ -97,6 +97,8 @@
       </table>
     </div>
     <script>
+      let editFlag = false;
+      let editIndex = 0;
       const productTable = document.getElementById("productTable");
       const products = [
         { name: "Iphone", price: 800 },
@@ -105,8 +107,10 @@
       ];
 
       renderTable();
+
       // render the Products table
       function renderTable() {
+        deleteTable();
         products.map((product, index, products) => {
           let row = productTable.insertRow(-1);
           row.insertCell(-1).innerText = index + 1;
@@ -131,14 +135,12 @@
 
       function deleteTable() {
         let rows = productTable.rows;
-        if (rows.length > 1) {
-          for (let i = 1; i <= rows.length; i++) {
-            console.log(i);
-            rows[i].remove();
-          }
+        while (rows.length > 1) {
+          rows[1].remove();
         }
       }
-      function insertRow(product, index) {
+
+      function insertTableRow(product, index) {
         let row = productTable.insertRow(index);
         row.insertCell(-1).innerText = index + 1;
         productArray = Object.values(product);
@@ -164,40 +166,64 @@
         products.push(product);
         console.log("products after add:", products);
       }
+      function replaceProduct(product, index) {
+        products.splice(product);
+        console.log("products after add:", products);
+      }
 
       function deleteProduct(index) {
-        products.splice(products, index);
+        products.splice(index, 1);
         console.log("products after delete:", products);
       }
-
-      // Table change function
-      function rowDelete(index) {
-        productTable.deleteRow(index);
-      }
-      function rowAdd(product) {
-        productTable.deleteRow(index);
+      function editProduct(product, index) {
+        products.splice(index, 1, product);
+        console.log("products after edit:", products);
+        editFlag = false;
+        editIndex = 0;
+        newProduct = {};
       }
 
       // Handler function
       function handleEdit() {
-        console.log("Edited");
-        console.log(this.parentElement.parentElement.rowIndex);
-        const productIndex = this.parentElement.parentElement.rowIndex;
+        const rowClicked = this.parentElement.parentElement;
+        const productIndex = rowClicked.rowIndex;
+        rowClicked.className = "table-info";
+        const newProduct = {};
+        document.getElementById("productName").value =
+          products[productIndex - 1].name;
+        document.getElementById("productPrice").value =
+          products[productIndex - 1].price;
+        editFlag = true;
+        editIndex = productIndex - 1;
       }
 
       function handleDelete() {
         const productIndex = this.parentElement.parentElement.rowIndex;
-        deleteProduct(productIndex);
-        rowDelete(productIndex);
+        console.log(productIndex);
+        deleteProduct(productIndex - 1);
+        renderTable();
+
+        // rowDelete(productIndex);
       }
-      function handleAdd() {
+      function handleAdd(productIndex) {
         const newProduct = {};
         newProduct.name = document.getElementById("productName").value;
         newProduct.price = document.getElementById("productPrice").value;
-        if (newProduct.name !== "" && newProduct.price !== "") {
-          addProduct(newProduct);
-          renderTable();
+        if (!editFlag) {
+          if (productIndex !== -1) {
+            if (newProduct.name !== "" && newProduct.price !== "") {
+              addProduct(newProduct);
+            }
+          }
+        } else {
+          editProduct(newProduct, editIndex);
         }
+        clearInput();
+        renderTable();
+      }
+      function clearInput() {
+        document.getElementById("productName").value = "";
+        document.getElementById("productPrice").value = "";
       }
     </script>
   </body>
