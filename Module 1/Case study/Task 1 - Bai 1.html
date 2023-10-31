@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tính lương</title>
+  </head>
+  <body>
+    <script>
+      let salary = +prompt("Nhập lương : ");
+      document.writeln(`Mức lương : ${salary} VNĐ </br>`);
+
+      if (salary >= 15000000) {
+        document.writeln(
+          `Lương thực nhận ${
+            salary - (salary * 20) / 100
+          } - Thuế thu nhập cá nhân (20%) : ${(salary * 20) / 100} VNĐ`
+        );
+      } else if (salary >= 7000000 && salary < 15000000) {
+        document.writeln(
+          `Lương thực nhận ${
+            salary - (salary * 10) / 100
+          } - Thuế thu nhập cá nhân (10%) : ${(salary * 10) / 100} VNĐ`
+        );
+      } else {
+        document.writeln(
+          `Lương thực nhận ${
+            salary - (salary * 5) / 100
+          } - Thuế thu nhập cá nhân (5%) : ${(salary * 5) / 100} VNĐ`
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Class</title>
+  </head>
+  <body>
+    <script>
+      class Temperature {
+        constructor(temp) {
+          this.temp = temp;
+        }
+        toFahrenheit(temp) {
+          return this.temp * 1.8 + 32;
+        }
+        toKelvil(temp) {
+          return this.temp + +273.15;
+        }
+      }
+      let input = +prompt("Nhập vào nhiệt độ theo độ C :");
+      let t = new Temperature(input);
+      document.writeln("Chuyển đổi sang độ F :" + t.toFahrenheit() + "</br>");
+      document.writeln("Chuyển đổi sang độ K :" + t.toKelvil());
+    </script>
+  </body>
+</html>
