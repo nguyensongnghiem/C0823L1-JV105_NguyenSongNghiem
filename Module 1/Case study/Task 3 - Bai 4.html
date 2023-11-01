@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gọi đồ uống</title>
+  </head>
+  <body>
+    <script>
+      const beverages = [
+        { name: "Café", price: 100, orderNumber: 1 },
+        { name: "Cam vắt", price: 200, orderNumber: 2 },
+        { name: "Nước ép cà rốt", price: 150, orderNumber: 3 },
+        { name: "Nước ép cà chua", price: 200, orderNumber: 4 },
+        { name: "Nước lọc", price: 50, orderNumber: 5 },
+        { name: "Nước dừa", price: 120, orderNumber: 6 },
+      ];
+      // Main
+      const orderNumbers = beverages.map((item) => item.orderNumber);
+      displayMenu();
+      let orderList = order();
+      printReceipt(orderList);
+      // display menu function
+      function displayMenu() {
+        document.writeln(`<b>MENU</b> <br>`);
+        beverages.forEach((item) =>
+          document.writeln(`${item.orderNumber} - ${item.name} <br>`)
+        );
+        document.writeln(`7 - Thoát <br>`);
+      }
+      // Order function
+      function order() {
+        let orderNumber = 0;
+        let quantity = 0;
+        const orderList = [];
+        do {
+          orderNumber = +prompt("Nhập mã đồ uống (nhập 7 để thoát): ");
+          if (orderNumbers.includes(orderNumber)) {
+            quantity = +prompt(
+              `Đơn giá ${getPrice(orderNumber)} - Nhập số lượng :`
+            );
+            orderList.push({ orderNumber: orderNumber, quantity: quantity });
+          }
+        } while (orderNumbers.includes(orderNumber));
+        return orderList;
+      }
+      // get price
+      function getPrice(orderNumber) {
+        let price = 0;
+        beverages.forEach((item, index) => {
+          if (item.orderNumber === orderNumber) {
+            price = item.price;
+          }
+        });
+        return price;
+      }
+
+      // getName
+      function getName(orderNumber) {
+        let name = "";
+        beverages.forEach((item, index) => {
+          if (item.orderNumber === orderNumber) {
+            name = item.name;
+          }
+        });
+        return name;
+      }
+      function printReceipt(orderList) {
+        let itemName,
+          itemPrice,
+          itemBill,
+          totalBill = 0;
+        document.writeln(`--------- YOUR BILL -------------- <br> `);
+        orderList.forEach((orderItem, index) => {
+          itemName = getName(orderItem.orderNumber);
+          itemPrice = getPrice(orderItem.orderNumber);
+          itemBill = itemPrice * orderItem.quantity;
+          document.writeln(
+            `${index + 1} . ${itemName} - SL ${
+              orderItem.quantity
+            } x ${itemPrice} VNĐ -Thành tiền ${itemBill} VNĐ <br> `
+          );
+          totalBill += itemBill;
+        });
+        document.writeln(`TOTAL BILL : ${totalBill} VNĐ <br> `);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prefixSums</title>
+  </head>
+  <body>
+    <script>
+      let inputArr = [];
+      let input = "";
+
+      do {
+        input = +prompt("Nhập vào 1 số nguyên ( nhập chữ bất kỳ để dừng): ");
+        if (!isNaN(input)) inputArr.push(input);
+      } while (!isNaN(input));
+
+      document.writeln(`Mảng nhập vào : ${inputArr} <br>`);
+      document.writeln(`Mảng PrefixSums  : ${prefixSums(inputArr)}`);
+
+      // function
+      function prefixSums(inputArr) {
+        const outputArr = [];
+        let prefixSum;
+        for (let i = 0; i < inputArr.length; i++) {
+          prefixSum = 0;
+          for (let j = 0; j <= i; j++) {
+            prefixSum += inputArr[j];
+          }
+          outputArr.push(prefixSum);
+        }
+        return outputArr;
+
+        // const outputArr = [];
+        // const prefixSum = outputArr.reduce((sum, item) => sum + item, 0);
+        // base condition
+        // if (inputArr.length === 0) {
+        //   return outputArr;
+        // } else {
+        //   const newItem = prefixSum + inputArr[0];
+        //   outputArr.unshift(prefixSums(inputArr.slice(1)));
+        //   console.log(outputArr);
+
+        //   return outputArr;
+      }
+    </script>
+  </body>
+</html>

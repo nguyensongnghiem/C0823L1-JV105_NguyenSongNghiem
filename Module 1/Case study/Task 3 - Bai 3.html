@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm phần tử trong 2 mảng</title>
+  </head>
+  <body>
+    <script>
+      let numerators = [];
+      let denominators = [];
+      let input = "";
+      do {
+        input = +prompt(
+          "Nhập vào mảng số numerators ( nhập chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input)) numerators.push(input);
+      } while (!isNaN(input));
+      do {
+        input = +prompt(
+          "Nhập vào mảng số denominators ( nhập chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input)) denominators.push(input);
+      } while (!isNaN(input));
+
+      document.writeln(`[ numerators ] : ${numerators} <br>`);
+      document.writeln(`[ denominators] : ${denominators} <br>`);
+      document.writeln(
+        `Max Fraction : ${maxFraction(numerators, denominators)} <br>`
+      );
+
+      // function
+      function maxFraction(numerators, denominators) {
+        if (numerators.length == denominators.length) {
+          let maxFraction = numerators[0] / denominators[0];
+          let nextFraction,
+            maxIndex = 0;
+          for (let i = 0; i < numerators.length; i++) {
+            nextFraction = numerators[i] / denominators[i];
+            if (nextFraction > maxFraction) {
+              maxFraction = nextFraction;
+              maxIndex = i;
+            }
+          }
+          return maxIndex;
+        } else return -1; // 2 mảng ko bằng nhau
+      }
+    </script>
+  </body>
+</html>

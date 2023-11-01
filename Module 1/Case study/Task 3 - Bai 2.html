@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm phần tử trong 2 mảng</title>
+  </head>
+  <body>
+    <script>
+      let inputArr1 = [];
+      let inputArr2 = [];
+      let input = "";
+      do {
+        input = +prompt(
+          "Nhập vào 1 số nguyên cho mảng A ( nhập chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input)) inputArr1.push(input);
+      } while (!isNaN(input));
+      do {
+        input = +prompt(
+          "Nhập vào 1 số nguyên cho mảng B ( nhập chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input)) inputArr2.push(input);
+      } while (!isNaN(input));
+
+      document.writeln(`Mảng A nhập vào : ${inputArr1} <br>`);
+      document.writeln(`Mảng B nhập vào : ${inputArr2} <br>`);
+      document.writeln(
+        `Mảng các phần tư có trong B nhưng không có trong A  : ${missItems(
+          inputArr1,
+          inputArr2
+        )} <br>`
+      );
+
+      // function
+      function missItems(a, b) {
+        const result = [];
+        for (let x of b) {
+          if (!a.includes(x)) result.push(x);
+        }
+        result.sort((a, b) => a - b);
+        return result;
+      }
+    </script>
+  </body>
+</html>
