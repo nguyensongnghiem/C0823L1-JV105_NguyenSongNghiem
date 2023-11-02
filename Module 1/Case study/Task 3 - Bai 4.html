@@ -35,7 +35,9 @@
       function displayMenu() {
         document.writeln(`<b>MENU</b> <br>`);
         beverages.forEach((item) =>
-          document.writeln(`${item.orderNumber} - ${item.name} <br>`)
+          document.writeln(
+            `${item.orderNumber} - ${item.name} - ${item.price} VNĐ <br>`
+          )
         );
         document.writeln(`7 - Thoát <br>`);
       }
