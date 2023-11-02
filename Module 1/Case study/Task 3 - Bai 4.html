@@ -17,9 +17,20 @@
       ];
       // Main
       const orderNumbers = beverages.map((item) => item.orderNumber);
-      displayMenu();
-      let orderList = order();
-      printReceipt(orderList);
+      let orderList;
+
+      // callback hell
+      setTimeout(() => {
+        displayMenu();
+        setTimeout(() => {
+          orderList = order();
+          setTimeout(() => {
+            printReceipt(orderList);
+          }, 100);
+        }, 100);
+      }, 100);
+
+      // End main
       // display menu function
       function displayMenu() {
         document.writeln(`<b>MENU</b> <br>`);
@@ -65,6 +76,8 @@
         });
         return name;
       }
+
+      // print receipt
       function printReceipt(orderList) {
         let itemName,
           itemPrice,
