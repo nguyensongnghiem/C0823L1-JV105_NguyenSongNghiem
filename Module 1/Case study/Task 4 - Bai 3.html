@@ -11,7 +11,7 @@
       let str2 = prompt(`Nhập vào chuỗi bất kỳ 2 : `);
       const charArray1 = str1.split("");
       const charArray2 = str2.split("");
-      let result = checkDuplicateChar(charArray1, charArray2);
+      let result = commonCharacterFind(charArray1, charArray2);
       document.writeln(`Chuỗi 1: ${str1} <br>`);
       document.writeln(`Chuỗi 2: ${str2} <br>`);
       document.writeln(`Các ký tự chung giữa 2 chuỗi : <br>`);
@@ -22,7 +22,7 @@
           } <br> `
         );
       });
-      function checkDuplicateChar(array1, array2) {
+      function commonCharacterFind(array1, array2) {
         const tally1 = tally(array1);
         const tally2 = tally(array2);
         const totalKeys = Object.keys({ ...tally1, ...tally2 });
