@@ -9,8 +9,11 @@
     <script>
       let str = prompt(`Nhập vào chuỗi bất kỳ: `);
       const charArray = str.split("");
-      document.writeln(`Các ký tự khác nhau trong chuỗi :`);
-      document.writeln(checkDifferentChar(charArray));
+      let result = checkDifferentChar(charArray);
+      document.writeln(`Chuỗi nhập vào : ${str} <br>`);
+      document.writeln(
+        `Có ${result.length} ký tự khác nhau trong chuỗi : ${result}`
+      );
       function checkDifferentChar(array) {
         let tallyChar = array.reduce((tally, char, array) => {
           tally[char] = (tally[char] || 0) + 1;
