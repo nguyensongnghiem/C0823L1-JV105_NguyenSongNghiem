@@ -6,8 +6,11 @@
     <title>Gọi đồ uống</title>
   </head>
   <body>
+    <h1 id="menu-header">MENU</h1>
+    <ul id="menuList"></ul>
+
     <script>
-      const beverages = [
+      const menu = [
         { name: "Café", price: 100, orderNumber: 1 },
         { name: "Cam vắt", price: 200, orderNumber: 2 },
         { name: "Nước ép cà rốt", price: 150, orderNumber: 3 },
@@ -16,36 +19,36 @@
         { name: "Nước dừa", price: 120, orderNumber: 6 },
       ];
       // Main
-      const orderNumbers = beverages.map((item) => item.orderNumber);
+      const orderNumbers = menu.map((item) => item.orderNumber);
       let orderList;
 
-      // callback hell
+      displayMenu();
       setTimeout(() => {
-        displayMenu();
-        setTimeout(() => {
-          orderList = order();
-          setTimeout(() => {
-            printReceipt(orderList);
-          }, 100);
-        }, 100);
-      }, 100);
+        orderList = order();
+      }, 200);
+      printReceipt(orderList);
 
       // End main
       // display menu function
       function displayMenu() {
+        console.log("display-begin");
+
         document.writeln(`<b>MENU</b> <br>`);
-        beverages.forEach((item) =>
+        menu.forEach((item) =>
           document.writeln(
             `${item.orderNumber} - ${item.name} - ${item.price} VNĐ <br>`
           )
         );
         document.writeln(`7 - Thoát <br>`);
+        console.log("display-end");
       }
       // Order function
       function order() {
         let orderNumber = 0;
         let quantity = 0;
         const orderList = [];
+        console.log("order");
+
         do {
           orderNumber = +prompt("Nhập mã đồ uống (nhập 7 để thoát): ");
           if (orderNumbers.includes(orderNumber)) {
@@ -55,12 +58,13 @@
             orderList.push({ orderNumber: orderNumber, quantity: quantity });
           }
         } while (orderNumbers.includes(orderNumber));
+
         return orderList;
       }
       // get price
       function getPrice(orderNumber) {
         let price = 0;
-        beverages.forEach((item, index) => {
+        menu.forEach((item, index) => {
           if (item.orderNumber === orderNumber) {
             price = item.price;
           }
@@ -71,7 +75,7 @@
       // getName
       function getName(orderNumber) {
         let name = "";
-        beverages.forEach((item, index) => {
+        menu.forEach((item, index) => {
           if (item.orderNumber === orderNumber) {
             name = item.name;
           }
@@ -85,6 +89,8 @@
           itemPrice,
           itemBill,
           totalBill = 0;
+        console.log("bill");
+
         document.writeln(`--------- YOUR BILL -------------- <br> `);
         orderList.forEach((orderItem, index) => {
           itemName = getName(orderItem.orderNumber);

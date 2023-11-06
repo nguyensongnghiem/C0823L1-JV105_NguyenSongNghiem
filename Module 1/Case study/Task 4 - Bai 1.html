@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuẩn hóa chuỗi ký tự</title>
+  </head>
+  <body>
+    <script>
+      let str = prompt(`Nhập vào chuỗi bất kỳ: `);
+      let newStr = normalizeString(str);
+      document.writeln(`Chuỗi nhập vào :${str} <br>`);
+      document.writeln(`Chuỗi sau khi chuẩn hóa : ${newStr} <Br>`);
+      document.writeln(`Từ dài nhất trong chuỗi : ${findMaxWord2(newStr)}`);
+      // function
+      function normalizeString(str) {
+        const array = str.split("");
+        const result = array.flatMap((char, index, array) => {
+          if (char === " " && array[index - 1] === " ") {
+            return [];
+          } else if (array[index - 1] === " " || index === 0)
+            return char.toUpperCase();
+          else return char.toLowerCase();
+        });
+        return result.join("").trim();
+      }
+      function findMaxWord(str) {
+        const words = str.split(" ");
+        console.log(words);
+        let maxIndex = 0;
+        let maxLength = 0;
+        let result = [];
+        for (let i = 0; i < words.length; i++) {
+          if (words[i].length > maxLength) {
+            maxIndex = i;
+            maxLength = words[i].length;
+          }
+        }
+        return words[maxIndex];
+      }
+      // cách 2
+      function findMaxWord2(str) {
+        const words = str.split(" ");
+        let maxIndex = words.reduce((maxIndex, word, index, array) => {
+          if (word.length > array[maxIndex].length) {
+            maxIndex = index;
+          }
+          return maxIndex;
+        }, 0);
+        return words[maxIndex];
+      }
+    </script>
+  </body>
+</html>

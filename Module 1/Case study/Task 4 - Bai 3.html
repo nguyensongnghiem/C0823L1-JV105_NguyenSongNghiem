@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm số ký tự chung giữa 2 chuỗi</title>
+  </head>
+  <body>
+    <script>
+      let str1 = prompt(`Nhập vào chuỗi bất kỳ 1 : `);
+      let str2 = prompt(`Nhập vào chuỗi bất kỳ 2 : `);
+      const charArray1 = str1.split("");
+      const charArray2 = str2.split("");
+      let result = checkDuplicateChar(charArray1, charArray2);
+      document.writeln(`Chuỗi 1: ${str1} <br>`);
+      document.writeln(`Chuỗi 2: ${str2} <br>`);
+      document.writeln(`Các ký tự chung giữa 2 chuỗi : <br>`);
+      result.forEach((obj) => {
+        document.writeln(
+          `ký tự ${Object.keys(obj)[0]} , số lần : ${
+            Object.values(obj)[0]
+          } <br> `
+        );
+      });
+      function checkDuplicateChar(array1, array2) {
+        const tally1 = tally(array1);
+        const tally2 = tally(array2);
+        const totalKeys = Object.keys({ ...tally1, ...tally2 });
+        let result = totalKeys.map((key) => {
+          if (
+            Object.keys(tally1).includes(key) &&
+            Object.keys(tally2).includes(key)
+          ) {
+            return tally1[key] < tally2[key]
+              ? { [key]: tally1[key] }
+              : { [key]: tally2[key] };
+          }
+        });
+        return result.filter((item) => item != null);
+      }
+      // Hàm kiểm kê
+      function tally(charArray) {
+        let tallyChar = charArray.reduce((tally, char, array) => {
+          tally[char] = (tally[char] || 0) + 1;
+          return tally;
+        }, {});
+        return tallyChar;
+      }
+    </script>
+  </body>
+</html>
