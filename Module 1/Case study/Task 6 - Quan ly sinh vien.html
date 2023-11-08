@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <title>Quản lý sinh viên</title>
+  </head>
+  <body>
+    <div class="container-fluid m-2">
+      <h1 class="text">Quản lý Sinh viên</h1>
+      <form>
+        <input
+          type="text"
+          class="form-control m-2 col-4"
+          id="idInput"
+          placeholder="Nhập mã SV"
+        />
+        <input
+          type="text"
+          class="form-control col-4 m-2"
+          id="nameInput"
+          placeholder="Nhập tên"
+        />
+        <input
+          type="text"
+          class="form-control col-4 m-2"
+          id="classInput"
+          placeholder="Nhập lớp"
+        />
+        <input
+          type="email"
+          class="form-control col-4 m-2"
+          id="emailInput"
+          placeholder="Nhập email"
+        />
+        <button class="btn btn-primary m-2" onclick="handleAdd()">
+          Thêm mới
+        </button>
+        <button class="btn btn-primary m-2" onclick="handleEdit()">
+          Thay đổi
+        </button>
+        <div id="tableContainer"></div>
+      </form>
+    </div>
+    <script>
+      class Students {
+        constructor(id = "", name = "", cls = "", email = "") {
+          this.id = id;
+          this.name = name;
+          this.cls = cls;
+          this.email = email;
+        }
+        getId() {
+          return this.id;
+        }
+        getName() {
+          return this.name;
+        }
+        getEmail() {
+          return this.email;
+        }
+        getCls() {
+          return this.cls;
+        }
+        setName(name) {
+          this.name = name;
+        }
+        setId(id) {
+          this.id = id;
+        }
+        setEmail(email) {
+          this.email = email;
+        }
+        setCls(cls) {
+          this.cls = cls;
+        }
+      }
+      let tableHeader = `<table class="table  table-bordered col-10">
+            <tr>
+              <th class='table-primary'>Mã sinh viên</th>
+              <th class='table-primary'>Tên sinh viên</th>
+              <th class='table-primary'>Lớp</th>
+              <th class='table-primary'>Địa chỉ email</th>
+              <th class='table-primary'>Sửa</th>
+              <th class='table-primary'>Xóa</th>
+            </tr>`;
+      let studentsDb = [];
+      let std1 = new Students(1, "NVA", "C08", "a@gmail.com");
+      let std2 = new Students(1, "NVB", "C09", "b@gmail.com");
+      studentsDb.push(std1);
+      studentsDb.push(std2);
+      const table = document.getElementById("tableContainer");
+      const idInput = document.getElementById("idInput");
+      const nameInput = document.getElementById("nameInput");
+      const emailInput = document.getElementById("emailInput");
+      const classInput = document.getElementById("classInput");
+      showTable();
+
+      //
+      function handleDelete() {
+        console.log(this);
+      }
+      function handleEdit() {
+        console.log("Edit");
+      }
+      function handleAdd() {
+        let newStudent = new Students();
+        console.log(idInput.value);
+        newStudent.setId(idInput.value);
+        newStudent.setName(nameInput.value);
+        newStudent.setEmail(emailInput.value);
+        newStudent.setCls(classInput.value);
+        studentsDb.push(newStudent);
+        console.log(newStudent);
+        showTable();
+        console.log("Added");
+      }
+      function handleUpdate() {
+        console.log("Update");
+      }
+      // function
+      function showTable() {
+        let studentInfos = studentsDb.reduce(
+          (studentInfo, { id, name, cls, email }) => {
+            studentInfo += `<tr>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${cls}</td>
+            <td>${email}</td>
+            <td><button class='btn btn-info' onclick='handleEdit()'>Sửa</button></td>
+            <td><button class='btn btn-danger' onclick='handleDelete()'>Xóa</button></td>
+          </tr>`;
+            return studentInfo;
+          },
+          ""
+        );
+        table.innerHTML = tableHeader + studentInfos;
+      }
+    </script>
+  </body>
+</html>

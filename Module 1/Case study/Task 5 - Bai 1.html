@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tính tổng số chẵn trong mảng 2 chiều</title>
+  </head>
+  <body>
+    <script>
+      let m = +prompt(`Nhập vào giá trị m của mảng 2 chiều [m][n] : `);
+      let n = +prompt(`Nhập vào giá trị n của mảng 2 chiều [m][n] : `);
+      let arr = [];
+      for (let i = 0; i < m; i++) {
+        let arr2 = [];
+        for (let j = 0; j < n; j++) {
+          arr2.push(Math.floor(Math.random() * 20));
+        }
+        arr.push(arr2);
+      }
+      console.log(arr);
+      document.writeln(`Mảng khởi tạo : ${JSON.stringify(arr)} <br>`);
+      document.writeln(
+        `Tổng các số chẵn trong mảng 2 chiều là : ${sumEven(arr)}`
+      );
+
+      function sumEven(array) {
+        let sumEven = array.reduce((rowSum, row) => {
+          let colSum = row.reduce((sum, element) => {
+            return element % 2 === 0 ? sum + element : sum;
+          }, 0);
+          return (rowSum += colSum);
+        }, 0);
+        return sumEven;
+      }
+    </script>
+  </body>
+</html>

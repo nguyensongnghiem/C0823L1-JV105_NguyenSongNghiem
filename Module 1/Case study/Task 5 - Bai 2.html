@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đếm và liệt kê số nguyên tố trong mảng 2 chiều</title>
+  </head>
+  <body>
+    <script>
+      let m = +prompt(`Nhập vào giá trị m của mảng 2 chiều [m][n] : `);
+      let n = +prompt(`Nhập vào giá trị n của mảng 2 chiều [m][n] : `);
+      let arr = [];
+      for (let i = 0; i < m; i++) {
+        let arr2 = [];
+        for (let j = 0; j < n; j++) {
+          arr2.push(Math.floor(Math.random() * 100));
+        }
+        arr.push(arr2);
+      }
+      console.log(arr);
+      document.writeln(`Mảng khởi tạo :  <br>`);
+      arr.forEach((row) => document.writeln(`${JSON.stringify(row)} <br>`));
+      document.writeln(
+        ` <br> Có ${
+          findPrimes(arr).length
+        } số nguyên tố xuất hiện trong mảng là : ${findPrimes(arr)}`
+      );
+
+      // hàm
+      function findPrimes(array) {
+        let result = [];
+        array.forEach((row) => {
+          let primes = row.filter((element) => {
+            return isPrime(element);
+          });
+          result = [...result, ...primes];
+        });
+        return result;
+      }
+
+      function isPrime(num) {
+        let isPrime = true;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+        return num <= 1 ? false : isPrime;
+      }
+    </script>
+  </body>
+</html>

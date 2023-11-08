@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm số lớn nhất và nhỏ nhất trong mảng 2 chiều</title>
+  </head>
+  <body>
+    <script>
+      let m = +prompt(`Nhập vào giá trị m của mảng 2 chiều [m][n] : `);
+      let n = +prompt(`Nhập vào giá trị n của mảng 2 chiều [m][n] : `);
+      let arr = [];
+      for (let i = 0; i < m; i++) {
+        let arr2 = [];
+        for (let j = 0; j < n; j++) {
+          arr2.push(Math.floor(Math.random() * 1000));
+        }
+        arr.push(arr2);
+      }
+      document.writeln(`Mảng khởi tạo :  <br>`);
+      arr.forEach((row) => document.writeln(`${JSON.stringify(row)} <br>`));
+      let sortedFlatArr = arr.flatMap((e) => e).sort((a, b) => a - b);
+      document.writeln(`Số nhỏ nhất trong mảng : ${sortedFlatArr[0]} <br>`);
+      document.writeln(
+        `Số lớn nhất trong mảng : ${sortedFlatArr[sortedFlatArr.length - 1]}`
+      );
+    </script>
+  </body>
+</html>
