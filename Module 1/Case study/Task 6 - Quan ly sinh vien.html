@@ -3,73 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
     <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Quản lý sinh viên</title>
+    <style>
+      input:user-invalid {
+        border: 2px red solid;
+      }
+    </style>
   </head>
   <body>
     <div class="container-fluid m-2">
-      <h1 class="text">Quản lý Sinh viên</h1>
-      <form>
-        <input
-          type="text"
-          class="form-control m-2 col-4"
-          id="idInput"
-          placeholder="Nhập mã SV"
-        />
-        <input
-          type="text"
-          class="form-control col-4 m-2"
-          id="nameInput"
-          placeholder="Nhập tên"
-        />
-        <input
-          type="text"
-          class="form-control col-4 m-2"
-          id="classInput"
-          placeholder="Nhập lớp"
-        />
-        <input
-          type="email"
-          class="form-control col-4 m-2"
-          id="emailInput"
-          placeholder="Nhập email"
-        />
-        <button class="btn btn-primary m-2" onclick="handleAdd()">
-          Thêm mới
+      <form action="" class="form-control" id="student-form">
+        <h2 class="text-center text-primary h1 m-2">Quản lý Sinh viên</h2>
+        <div class="input-group m-2 col-4">
+          <label class="input-group-text col-2" for="idInput"
+            >Mã sinh viên</label
+          >
+          <input
+            class="form-control col-3"
+            placeholder="Nhập mã sinh viên "
+            id="idInput"
+            required
+            maxlength="8"
+            pattern="HV-[0-9]{4}"
+          />
+        </div>
+        <div class="input-group m-2">
+          <label for="nameInput" class="input-group-text col-2">Họ tên</label>
+          <input
+            type="text"
+            class="form-control col-3"
+            id="nameInput"
+            placeholder="Nhập tên"
+            maxlength="50"
+            required
+          />
+        </div>
+        <div class="input-group m-2">
+          <label for="classInput" class="input-group-text col-2">Lớp</label>
+          <input
+            type="text"
+            class="form-control col-3"
+            id="classInput"
+            placeholder="Nhập lớp"
+            required
+          />
+        </div>
+        <div class="input-group m-2">
+          <label for="emailInput" class="input-group-text col-2">Email</label>
+          <input
+            type="email"
+            class="form-control col-3"
+            id="emailInput"
+            placeholder="Nhập email"
+            required
+          />
+        </div>
+        <div class="input-group m-2">
+          <label for="bdayInput" class="input-group-text col-2"
+            >Ngày sinh</label
+          >
+          <input
+            type="date"
+            class="form-control col-3"
+            id="bdayInput"
+            placeholder="Nhập ngày sinh"
+            required
+          />
+        </div>
+        <div class="input-group m-2">
+          <label for="moduleInput" class="input-group-text col-2">Module</label>
+          <input
+            type="text"
+            class="form-control col-3"
+            id="moduleInput"
+            placeholder="Nhập tên module"
+            maxlength="1"
+            pattern="[1-6]{1}"
+            required
+          />
+        </div>
+        <button
+          type="button"
+          id="addBtn"
+          class="btn btn-primary btn-sm m-2"
+          onclick="handleAdd()"
+        >
+          <i class="fa fa-plus-square"> </i> Thêm mới
         </button>
-        <button class="btn btn-primary m-2" onclick="handleEdit()">
-          Thay đổi
+        <button
+          type="button"
+          id="editBtn"
+          class="btn btn-primary btn-sm m-2"
+          onclick="handleUpdate()"
+        >
+          <i class="fa fa-refresh"> </i> Cập nhật
         </button>
-        <div id="tableContainer"></div>
       </form>
     </div>
+    <div id="tableContainer"></div>
     <script>
       class Students {
-        constructor(id = "", name = "", cls = "", email = "") {
+        constructor(
+          id = "",
+          name = "",
+          cls = "",
+          email = "",
+          birthday = "",
+          module = ""
+        ) {
           this.id = id;
           this.name = name;
           this.cls = cls;
           this.email = email;
+          this.birthday = birthday;
+          this.module = module;
         }
         getId() {
           return this.id;
@@ -83,11 +146,17 @@
         getCls() {
           return this.cls;
         }
-        setName(name) {
-          this.name = name;
+        getBirthday() {
+          return this.birthday;
+        }
+        getModule() {
+          return this.module;
         }
         setId(id) {
           this.id = id;
+        }
+        setName(name) {
+          this.name = name;
         }
         setEmail(email) {
           this.email = email;
@@ -95,67 +164,184 @@
         setCls(cls) {
           this.cls = cls;
         }
+        setBirthday(birthday) {
+          this.birthday = birthday;
+        }
+        setModule(module) {
+          this.module = module;
+        }
       }
-      let tableHeader = `<table class="table  table-bordered col-10">
-            <tr>
-              <th class='table-primary'>Mã sinh viên</th>
-              <th class='table-primary'>Tên sinh viên</th>
-              <th class='table-primary'>Lớp</th>
-              <th class='table-primary'>Địa chỉ email</th>
-              <th class='table-primary'>Sửa</th>
-              <th class='table-primary'>Xóa</th>
+      let tableHeader = `<table class="table table-hover table-sm col-10 m-2">
+            <tr class = 'table-dark'>
+              <th class=''>Mã sinh viên</th>
+              <th class=''>Tên sinh viên</th>
+              <th class=''>Lớp</th>
+              <th class=''>Địa chỉ email</th>
+              <th class=''>Ngày sinh</th>
+              <th class=''>Module</th>
+              <th class=''>Sửa</th>
+              <th class=''>Xóa</th>
             </tr>`;
       let studentsDb = [];
-      let std1 = new Students(1, "NVA", "C08", "a@gmail.com");
-      let std2 = new Students(1, "NVB", "C09", "b@gmail.com");
+      let std1 = new Students(
+        "1",
+        "NVA",
+        "C08",
+        "a@gmail.com",
+        "01/01/1990",
+        "Module 1"
+      );
+      let std2 = new Students(
+        "2",
+        "NVB",
+        "C09",
+        "b@gmail.com",
+        "10/02/1995",
+        "Module 3"
+      );
       studentsDb.push(std1);
       studentsDb.push(std2);
       const table = document.getElementById("tableContainer");
+      const form = document.getElementById("student-form");
       const idInput = document.getElementById("idInput");
       const nameInput = document.getElementById("nameInput");
       const emailInput = document.getElementById("emailInput");
       const classInput = document.getElementById("classInput");
+      const bdayInput = document.getElementById("bdayInput");
+      const moduleInput = document.getElementById("moduleInput");
       showTable();
-
       //
-      function handleDelete() {
-        console.log(this);
+      function handleDelete(id) {
+        let indexOfDeleted;
+        for (let i = 0; i < studentsDb.length; i++) {
+          if (studentsDb[i].id == id) {
+            indexOfDeleted = i;
+            break;
+          }
+        }
+        console.log(indexOfDeleted);
+        let isConfirm = confirm(
+          `Bạn muốn xóa sinh viên ${studentsDb[indexOfDeleted].name}? `
+        );
+        if (isConfirm) {
+          studentsDb.splice(indexOfDeleted, 1);
+          showTable();
+        }
       }
-      function handleEdit() {
+      function handleEdit(id, e) {
+        let row = e.parentElement.parentElement;
+        idInput.setAttribute("disabled", true);
+        // row.className = "table-active";
+        let index = studentsDb.reduce(
+          (indexOfEdit, student, index) =>
+            student.id == id ? index : indexOfEdit,
+          -1
+        );
+        console.log(index);
+        idInput.value = studentsDb[index].id;
+        nameInput.value = studentsDb[index].name;
+        emailInput.value = studentsDb[index].email;
+        classInput.value = studentsDb[index].cls;
+        bdayInput.value = studentsDb[index].birthday;
+        moduleInput.value = studentsDb[index].module;
+        document.getElementById("addBtn").setAttribute("disabled", true);
         console.log("Edit");
       }
       function handleAdd() {
-        let newStudent = new Students();
-        console.log(idInput.value);
-        newStudent.setId(idInput.value);
-        newStudent.setName(nameInput.value);
-        newStudent.setEmail(emailInput.value);
-        newStudent.setCls(classInput.value);
-        studentsDb.push(newStudent);
-        console.log(newStudent);
-        showTable();
-        console.log("Added");
+        if (isInputAvailable()) {
+          if (isIdExisted(idInput.value)) {
+            alert("Mã sinh viên đã tồn tại");
+          } else {
+            let newStudent = new Students();
+            newStudent.setId(idInput.value);
+            newStudent.setName(nameInput.value);
+            newStudent.setEmail(emailInput.value);
+            newStudent.setCls(classInput.value);
+            newStudent.setBirthday(bdayInput.value);
+            newStudent.setModule(moduleInput.value);
+            console.log(newStudent);
+            studentsDb.push(newStudent);
+            showTable();
+            // clearInput();
+            form.reset();
+
+            console.log("Added");
+          }
+        }
       }
       function handleUpdate() {
-        console.log("Update");
+        if (isInputAvailable()) {
+          let id = idInput.value;
+          let index = studentsDb.reduce(
+            (indexOfEdit, student, index) =>
+              student.id == id ? index : indexOfEdit,
+            -1
+          );
+          let isConfirm = confirm(
+            `Bạn muốn cập nhật thông sinh viên ${studentsDb[index].name}? `
+          );
+
+          studentsDb[index].name = nameInput.value;
+          studentsDb[index].email = emailInput.value;
+          studentsDb[index].cls = classInput.value;
+          studentsDb[index].birthday = bdayInput.value;
+          studentsDb[index].module = moduleInput.value;
+          showTable();
+          // clearInput();
+          form.reset();
+          document.getElementById("addBtn").removeAttribute("disabled");
+          idInput.removeAttribute("disabled");
+          console.log("Update");
+        }
+      }
+      function isIdExisted(id) {
+        const studentIDs = studentsDb.map((student) => student.id);
+        return studentIDs.includes(id);
       }
       // function
       function showTable() {
         let studentInfos = studentsDb.reduce(
-          (studentInfo, { id, name, cls, email }) => {
+          (studentInfo, { id, name, cls, email, birthday, module }) => {
             studentInfo += `<tr>
             <td>${id}</td>
             <td>${name}</td>
             <td>${cls}</td>
             <td>${email}</td>
-            <td><button class='btn btn-info' onclick='handleEdit()'>Sửa</button></td>
-            <td><button class='btn btn-danger' onclick='handleDelete()'>Xóa</button></td>
+            <td>${birthday}</td>
+            <td>${module}</td>
+            <td><button class='btn btn-info btn-sm' onclick='handleEdit(${id},this)'><i class="fa fa-pencil"></i> Sửa </button></td>
+            <td><button class='btn btn-danger btn-sm' onclick='handleDelete(${id})'><i class="fa fa-trash"> </i> Xóa </button></td>
           </tr>`;
             return studentInfo;
           },
           ""
         );
         table.innerHTML = tableHeader + studentInfos;
+      }
+      function clearInput() {
+        idInput.value = "";
+        nameInput.value = "";
+        emailInput.value = "";
+        classInput.value = "";
+        bdayInput.value = "";
+        moduleInput.value = "";
+      }
+      function isInputAvailable() {
+        if (
+          idInput.checkValidity() &&
+          nameInput.checkValidity() &&
+          emailInput.checkValidity() &&
+          classInput.checkValidity() &&
+          bdayInput.checkValidity() &&
+          moduleInput.checkValidity()
+        )
+          return true;
+        else {
+          alert(
+            "Thông tin bạn nhập chưa đúng format yêu cầu. Vui lòng kiểm tra lại !"
+          );
+          return false;
+        }
       }
     </script>
   </body>
