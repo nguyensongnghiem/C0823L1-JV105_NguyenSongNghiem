@@ -21,6 +21,9 @@
     />
     <title>Quản lý sinh viên</title>
     <style>
+      input {
+        border: 1px black solid;
+      }
       input:user-invalid {
         border: 2px red solid;
       }
@@ -30,7 +33,7 @@
     <div class="container-fluid m-2">
       <form action="" class="form-control" id="student-form">
         <h2 class="text-center text-primary h1 m-2">Quản lý Sinh viên</h2>
-        <div class="input-group m-2 col-4">
+        <div class="input-group m-2 w-50">
           <label class="input-group-text col-2" for="idInput"
             >Mã sinh viên</label
           >
@@ -43,7 +46,7 @@
             pattern="HV-[0-9]{4}"
           />
         </div>
-        <div class="input-group m-2">
+        <div class="input-group m-2 w-50">
           <label for="nameInput" class="input-group-text col-2">Họ tên</label>
           <input
             type="text"
@@ -54,7 +57,7 @@
             required
           />
         </div>
-        <div class="input-group m-2">
+        <div class="input-group m-2 w-50">
           <label for="classInput" class="input-group-text col-2">Lớp</label>
           <input
             type="text"
@@ -64,7 +67,7 @@
             required
           />
         </div>
-        <div class="input-group m-2">
+        <div class="input-group m-2 w-50">
           <label for="emailInput" class="input-group-text col-2">Email</label>
           <input
             type="email"
@@ -74,7 +77,7 @@
             required
           />
         </div>
-        <div class="input-group m-2">
+        <div class="input-group m-2 w-50">
           <label for="bdayInput" class="input-group-text col-2"
             >Ngày sinh</label
           >
@@ -86,7 +89,7 @@
             required
           />
         </div>
-        <div class="input-group m-2">
+        <div class="input-group m-2 w-50">
           <label for="moduleInput" class="input-group-text col-2">Module</label>
           <input
             type="text"
