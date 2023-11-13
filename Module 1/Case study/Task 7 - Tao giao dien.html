@@ -19,13 +19,86 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Tạo giao diện quản lý Bài tập CodeGym</title>
+   
   </head>
   <body>
-    <div class="container">
-      <div class="navBar row" >
-        <h2 class="h2 text-center" > Hệ thống quản lý bài tập CodeGym</h2>
+    <style>
+      .header-text {
+        display: inline-block;
+        font-weight: bolder;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-style: italic;
+        text-align: end;
+        vertical-align: top;
+      }
+      .logo-thumnail{
+        display: inline-block;
+        width: 200px;
+        vertical-align: top;
+       
+      }
+      .search-box {
+        font-size: 20px;
+        margin-top: 20px;
+        padding-left: 20px;
+        width: 100%;
+        border-radius: 5px;
+      }
+      select {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .content-containter {
+        height: 500px;
+      }
+      .navBar {
+        display:block;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-bottom: 2px gray  solid;
+        
+      }
+      .exercise-body {
+        background-color: gray;
+        display: inline-block;
+        vertical-align: top;
+
+      }
+      .sideBar {
+        display: inline-block;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 500px;
+        vertical-align: top;
+        background-color:#dddddd ;
+      }
+    </style>
+    <div class="container-fluid">
+      <div class="navBar" >
+        <img src="/Module 1/Case study/Codegym X.png" class="col-2 logo-thumnail" alt="logo"></img>
+        <h2 class="h2 col-10 text-black-50 header-text" > Hệ thống quản lý bài tập CodeGym</h2>
       </div>
-      <div class="body"></div>-
+      <div class="content-containter ">
+          <div id='practiceList' class="sideBar">
+            <input type="text" placeholder="Seach" class="search-box">
+            <p style="font-weight: bold; margin-top: 20px;">Module</p>
+            <select name="moduleSelect" class="module-select">
+              <option value="module1">Module 1</option>
+              <option value="module2">Module 2</option>
+              <option value="module3">Module 3</option>
+            </select>
+            <select name="execiseSelect" class="execise-select">
+              <option value="Ex1">Execise 1</option>
+              <option value="Ex2">Execise 2</option>
+              <option value="Ex3">Execise 3</option>
+            </select>
+
+          </div>  
+          <div class="exercise-body">
+            <p>Nội dung</p>             
+          </div>
+      </div>
     </div>
     <script>
       
