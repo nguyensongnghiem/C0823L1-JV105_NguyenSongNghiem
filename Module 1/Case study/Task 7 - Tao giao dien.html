@@ -23,6 +23,11 @@
   </head>
   <body>
     <style>
+      * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+      }
       .header-text {
         display: inline-block;
         font-weight: bolder;
@@ -51,6 +56,7 @@
       }
       .content-containter {
         height: 500px;
+        width: auto;
       }
       .navBar {
         display:block;
@@ -60,10 +66,11 @@
         
       }
       .exercise-body {
-        background-color: gray;
+        background-color: rgb(251, 251, 251);
         display: inline-block;
         vertical-align: top;
-
+        width: 60%;
+        height: 100%;
       }
       .sideBar {
         display: inline-block;
@@ -71,7 +78,8 @@
         padding-right: 20px;
         height: 500px;
         vertical-align: top;
-        background-color:#dddddd ;
+        width: 30%;  
+        background-color: lightgrey;
       }
     </style>
     <div class="container-fluid">
@@ -96,7 +104,7 @@
 
           </div>  
           <div class="exercise-body">
-            <p>Nội dung</p>             
+            <p>Nội dung - abc</p>             
           </div>
       </div>
     </div>
