@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam - 3</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      let input = 0;
+      while (!isNaN(input)) {
+        input = +prompt(
+          "Nhập số nguyên vào mảng (nhập ký tự chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input) && input % 1 === 0) {
+          arr.push(input);
+        }
+      }
+      do {
+        n = +prompt("Nhập vào số nguyên n : ");
+        if (n % 1 !== 0 || isNaN(n))
+          alert("Số nhập vào không đúng ! Nhập lại !");
+      } while (n % 1 !== 0 || isNaN(n));
+
+      document.writeln(
+        `Mảng nhập vào là : ${arr.join(",")} và số n là : ${n} <br>`
+      );
+      document.writeln(
+        `Số phần tử khác nhau trong mảng chia hết cho ${n} là : ${findDiffNum(
+          arr,
+          n
+        )}`
+      );
+      // function
+      function findDiffNum(arr, n) {
+        let tally = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (!tally.includes(arr[i])) tally.push(arr[i]);
+        }
+        console.log(tally);
+        let result = tally.reduce((count, item) => {
+          if (item % n === 0) {
+            count++;
+          }
+          return count;
+        }, 0);
+        console.log(result);
+        return result;
+      }
+    </script>
+  </body>
+</html>

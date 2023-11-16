@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam - 2</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      let input = 0;
+      while (!isNaN(input)) {
+        input = +prompt(
+          "Nhập số nguyên vào mảng (nhập ký tự chữ bất kỳ để dừng): "
+        );
+        if (!isNaN(input)) {
+          arr.push(input);
+        }
+      }
+      console.log(arr);
+      document.writeln(`Mảng nhập vào là : ${arr.join(",")} <br>`);
+      document.writeln(
+        `Kết quả [index_min, index_max] : ${findMinMaxIndex(arr)}`
+      );
+      // function
+      function findMinMaxIndex(arr) {
+        let sortedArr = [...arr].sort((a, b) => a - b);
+        let min = sortedArr[0];
+        let max = sortedArr[sortedArr.length - 1];
+        return [arr.indexOf(min), arr.indexOf(max)];
+      }
+    </script>
+  </body>
+</html>

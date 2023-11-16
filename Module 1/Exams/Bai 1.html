@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam - 1</title>
+  </head>
+  <body>
+    <script>
+      let input;
+      do {
+        input = +prompt("Nhập vào số nguyên lớn hơn 0: ");
+        if (input < 0 || input % 1 !== 0 || isNaN(input))
+          alert("Số nhập vào không đúng ! Nhập lại !");
+      } while (input < 0 || input % 1 !== 0 || isNaN(input));
+      console.log(input);
+      let result = [];
+      for (let i = 0; i <= input; i++) {
+        if (input % i === 0) result.push(i);
+      }
+      document.writeln(`Các ước của ${input} là : ${result.join(",")}`);
+    </script>
+  </body>
+</html>
